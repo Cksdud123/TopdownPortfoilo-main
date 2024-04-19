@@ -18,7 +18,7 @@ public class DefaultState : ActionBaseState
         if (Input.GetKeyDown(KeyCode.R))
         {
             actions.previousState = this;
-            actions .SwitchState(actions.Reload);
+            actions.SwitchState(actions.Reload);
         }
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine.Animations.Rigging;
 
 public class WeaponChange : MonoBehaviour
 {
-    [SerializeField] public Rig rig;
+    [SerializeField] public Rig[] rigs;
     [HideInInspector] public Animator anim;
 
     public WeaponManager[] weapons;
@@ -20,7 +20,6 @@ public class WeaponChange : MonoBehaviour
     }
     void Start()
     {
-        //rig.weight = 0;
         //anim.SetLayerWeight(1, 0);
         currentWeaponIndex = 0;
         weapons[currentWeaponIndex].gameObject.SetActive(true);
@@ -31,6 +30,7 @@ public class WeaponChange : MonoBehaviour
     }
     public void WeaponSwap()
     {
+
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             WeaponSelect(0);
@@ -56,4 +56,18 @@ public class WeaponChange : MonoBehaviour
 
         anim.SetTrigger("Swap");
     }
+    /*public void SetActiveRig(int rigIndex)
+    {
+        // 모든 리깅을 비활성화합니다.
+        foreach (var rig in rigs)
+        {
+            rig.weight = 0f;
+        }
+
+        // 선택한 리깅을 활성화합니다.
+        if (rigIndex >= 0 && rigIndex < rigs.Length)
+        {
+            rigs[rigIndex].weight = 1f;
+        }
+    }*/
 }

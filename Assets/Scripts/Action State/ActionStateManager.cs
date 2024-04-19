@@ -7,6 +7,8 @@ using UnityEngine.Animations.Rigging;
 public class ActionStateManager : MonoBehaviour
 {
     [SerializeField] LayerMask groundMask;
+    [SerializeField] public Rig[] rigs;
+
     public ActionBaseState currentState;
     public ActionBaseState previousState;
     [HideInInspector] public Animator anim;
@@ -18,13 +20,15 @@ public class ActionStateManager : MonoBehaviour
     [HideInInspector] public WeaponManager WeaponManager;
     [HideInInspector] public WeaponAmmo ammo;
     [HideInInspector] public CinemachineVirtualCamera vCam;
+    
 
     public float AimingFov = 50f;
     [HideInInspector] public float IdleFov;
     [HideInInspector] public float currentFov;
     public float fovSmoothSpeed = 10f;
-    //public TwoBoneIKConstraint lHandIK;
-    //public TwoBoneIKConstraint RHandIK;
+
+    public TwoBoneIKConstraint lHandIK;
+    public TwoBoneIKConstraint RHandIK;
 
     void Awake()
     {
@@ -52,6 +56,14 @@ public class ActionStateManager : MonoBehaviour
         currentState = state;
         currentState.EnterState(this);
     }
+    public void WeaponReloaded()
+    {
+        ammo.Reload();
+        lHandIK.weight = 1;
+        RHandIK.weight = 1;
+        SwitchState(Default);
+    }
+
     public void AimCamera()
     {
         var (success, position) = GetMousePosition();
