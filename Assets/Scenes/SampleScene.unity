@@ -1576,6 +1576,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 926cd19e881c72c4ba1d23ee5c05a8a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rig: {fileID: 350424989}
+  anim: {fileID: 0}
   weapons:
   - {fileID: 5621304866684955235}
   - {fileID: 8300557498425779222}
@@ -7028,7 +7030,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6452705232424874153
 Transform:
   m_ObjectHideFlags: 0
