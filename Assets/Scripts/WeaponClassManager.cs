@@ -28,10 +28,6 @@ public class WeaponClassManager : MonoBehaviour
         currentWeaponIndex = 0;
         weapons[currentWeaponIndex].gameObject.SetActive(true);
     }
-    private void Update()
-    {
-        WeaponSwap();
-    }
     public void SetCurrentWeapon(WeaponManager weapon)
     {
         if (actions == null) actions = GetComponent<ActionStateManager>();
@@ -39,36 +35,41 @@ public class WeaponClassManager : MonoBehaviour
         RHandIK.data.target = weapon.RHandTarget;
         actions.SetWeapon(weapon);
     }
+    private void Update()
+    {
+        WeaponSwap();
+    }
     public void WeaponSwap()
     {
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            WeaponSelect(0);
+            StartCoroutine(WeaponSelect(0));
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            WeaponSelect(1);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            weapons[currentWeaponIndex].gameObject.SetActive(false);
-            anim.SetLayerWeight(1, 0);
-            rigs.weight = 0;
+            StartCoroutine(WeaponSelect(1));
         }
     }
-    public void WeaponSelect(int weaponIndex)
+
+    IEnumerator WeaponSelect(int weaponIndex)
     {
         rigs.weight = 1;
         anim.SetLayerWeight(1, 1);
 
-        if (currentWeaponIndex == weaponIndex) return;
-
-        weapons[currentWeaponIndex].gameObject.SetActive(false);
-        weapons[weaponIndex].gameObject.SetActive(true);
-        currentWeaponIndex = weaponIndex;
+        if (currentWeaponIndex == weaponIndex) yield break;
 
         anim.SetTrigger("Swap");
+
+        yield return new WaitForSeconds(1f);
+        // 현재 무기를 비활성화 한다
+        weapons[currentWeaponIndex].gameObject.SetActive(false);
+
+        // 입력으로 들어온 무기를 활성화 한다.
+        weapons[weaponIndex].gameObject.SetActive(true);
+
+        // 입력으로 들어온 무기를 현재 무기로 변경한다.
+        currentWeaponIndex = weaponIndex;
     }
     IEnumerator WeaponPutAway()
     {
@@ -76,7 +77,6 @@ public class WeaponClassManager : MonoBehaviour
         IHandIK.weight = 0;
         RHandIK.weight = 0;
     }
-
     IEnumerator WeaponPulledOut()
     {
         yield return null;

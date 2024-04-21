@@ -8,7 +8,7 @@ public class ReloadState : ActionBaseState
     public override void EnterState(ActionStateManager actions)
     {
         actions.RHandIK.weight = 0;
-        actions.lHandIK.weight = 0;
+        actions.IHandIK.weight = 0;
         actions.anim.SetTrigger("Reloading");
     }
 

@@ -16,6 +16,7 @@ public class ActionStateManager : MonoBehaviour
     public AimingState AimState = new AimingState();
     public ReloadState Reload = new ReloadState();
 
+    [HideInInspector] public WeaponClassManager ClassManager;
     [HideInInspector] public WeaponManager currentWeapon;
     [HideInInspector] public WeaponAmmo ammo;
     [HideInInspector] public CinemachineVirtualCamera vCam;
@@ -27,12 +28,13 @@ public class ActionStateManager : MonoBehaviour
     [HideInInspector] public float currentFov;
     public float fovSmoothSpeed = 10f;
 
-    public TwoBoneIKConstraint lHandIK;
+    public TwoBoneIKConstraint IHandIK;
     public TwoBoneIKConstraint RHandIK;
 
     void Awake()
     {
         anim = GetComponent<Animator>();
+        ClassManager = GetComponent<WeaponClassManager>();
         vCam = GetComponentInChildren<CinemachineVirtualCamera>();
     }
     void Start()
@@ -59,10 +61,9 @@ public class ActionStateManager : MonoBehaviour
     {
         ammo.Reload();
         yield return null;
-        lHandIK.weight = 1;
+        IHandIK.weight = 1;
         RHandIK.weight = 1;
         SwitchState(Default);
-        // 함수 내용
     }
     public void SetWeapon(WeaponManager weapon)
     {
