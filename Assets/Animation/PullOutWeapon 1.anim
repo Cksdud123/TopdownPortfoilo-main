@@ -38361,8 +38361,8 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 1.0166667
-    functionName: WeaponPutAway
+  - time: 1
+    functionName: WeaponPulledOut
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

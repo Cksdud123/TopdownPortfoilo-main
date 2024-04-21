@@ -45,9 +45,6 @@ public class WeaponClassManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             WeaponSelect(0);
-            // 여기가 지금 문제요
-            //weapons[currentWeaponIndex].gameObject.SetActive(true);
-            //anim.SetTrigger("Swap");
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
@@ -57,13 +54,13 @@ public class WeaponClassManager : MonoBehaviour
         {
             weapons[currentWeaponIndex].gameObject.SetActive(false);
             anim.SetLayerWeight(1, 0);
-            //rigs.weight = 0;
+            rigs.weight = 0;
         }
     }
     public void WeaponSelect(int weaponIndex)
     {
-        //rigs.weight = 1;
-        //anim.SetLayerWeight(1, 1);
+        rigs.weight = 1;
+        anim.SetLayerWeight(1, 1);
 
         if (currentWeaponIndex == weaponIndex) return;
 
@@ -73,12 +70,18 @@ public class WeaponClassManager : MonoBehaviour
 
         anim.SetTrigger("Swap");
     }
-    public void WeaponPutAway()
+    IEnumerator WeaponPutAway()
     {
-
+        yield return null;
+        IHandIK.weight = 0;
+        RHandIK.weight = 0;
     }
-    public void WeaponPulledOut()
+
+    IEnumerator WeaponPulledOut()
     {
+        yield return null;
+        IHandIK.weight = 1;
+        RHandIK.weight = 1;
         actions.SwitchState(actions.Default);
     }
 }
