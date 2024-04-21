@@ -7,6 +7,7 @@ public class WeaponClassManager : MonoBehaviour
 {
     [SerializeField] public TwoBoneIKConstraint RHandIK;
     [SerializeField] public TwoBoneIKConstraint IHandIK;
+    [SerializeField] public RigBuilder rigBuilder;
     [SerializeField] public Rig rigs;
 
     [HideInInspector] public Animator anim;
@@ -32,7 +33,8 @@ public class WeaponClassManager : MonoBehaviour
     {
         if (actions == null) actions = GetComponent<ActionStateManager>();
         IHandIK.data.target = weapon.IHandTarget;
-        RHandIK.data.target = weapon.RHandTarget;
+        RHandIK.data.target = weapon. RHandTarget;
+        rigBuilder.Build();
         actions.SetWeapon(weapon);
     }
     private void Update()
@@ -41,7 +43,6 @@ public class WeaponClassManager : MonoBehaviour
     }
     public void WeaponSwap()
     {
-
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             StartCoroutine(WeaponSelect(0));
@@ -83,5 +84,14 @@ public class WeaponClassManager : MonoBehaviour
         IHandIK.weight = 1;
         RHandIK.weight = 1;
         actions.SwitchState(actions.Default);
+    }
+    private WeaponManager GetActiveWeaponManager()
+    {
+        if (weapons == null || weapons.Length == 0)
+        {
+            return null;
+        }
+
+        return weapons[currentWeaponIndex];
     }
 }
