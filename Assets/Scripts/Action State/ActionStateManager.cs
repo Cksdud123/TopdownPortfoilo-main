@@ -7,7 +7,6 @@ using UnityEngine.Animations.Rigging;
 public class ActionStateManager : MonoBehaviour
 {
     [SerializeField] LayerMask groundMask;
-    [SerializeField] public Rig[] rigs;
 
     public ActionBaseState currentState;
     public ActionBaseState previousState;
@@ -17,9 +16,10 @@ public class ActionStateManager : MonoBehaviour
     public AimingState AimState = new AimingState();
     public ReloadState Reload = new ReloadState();
 
-    [HideInInspector] public WeaponManager WeaponManager;
+    [HideInInspector] public WeaponManager currentWeapon;
     [HideInInspector] public WeaponAmmo ammo;
     [HideInInspector] public CinemachineVirtualCamera vCam;
+
     
 
     public float AimingFov = 50f;
@@ -33,7 +33,6 @@ public class ActionStateManager : MonoBehaviour
     void Awake()
     {
         anim = GetComponent<Animator>();
-        ammo = GetComponentInChildren<WeaponAmmo>();
         vCam = GetComponentInChildren<CinemachineVirtualCamera>();
     }
     void Start()
@@ -56,12 +55,19 @@ public class ActionStateManager : MonoBehaviour
         currentState = state;
         currentState.EnterState(this);
     }
-    public void WeaponReloaded()
+    IEnumerator WeaponReloaded()
     {
         ammo.Reload();
+        yield return null;
         lHandIK.weight = 1;
         RHandIK.weight = 1;
         SwitchState(Default);
+        // 함수 내용
+    }
+    public void SetWeapon(WeaponManager weapon)
+    {
+        currentWeapon = weapon;
+        ammo = weapon.ammo;
     }
 
     public void AimCamera()

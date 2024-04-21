@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Burst.Intrinsics;
+using UnityEngine.Animations.Rigging;
 using UnityEngine;
-using UnityEngine.Rendering.PostProcessing;
+
 
 public class WeaponManager : MonoBehaviour
 {
@@ -23,16 +23,27 @@ public class WeaponManager : MonoBehaviour
     ParticleSystem muzzleFlash;
 
     private ActionStateManager actions;
+    WeaponClassManager weaponClass;
+
+    public Transform IHandTarget;
+    public Transform RHandTarget;
 
     // Start is called before the first frame update
     void Start()
     {
         muzzleFlash = GetComponentInChildren<ParticleSystem>();
         actions = GetComponentInParent<ActionStateManager>();
-        //ammo = GetComponentInChildren<WeaponAmmo>();
         fireRateTimer = fireRate;
     }
-
+    private void OnEnable()
+    {
+        if (weaponClass == null)
+        {
+            weaponClass = GetComponentInParent<WeaponClassManager>();
+            ammo = GetComponent<WeaponAmmo>();
+        }
+        weaponClass.SetCurrentWeapon(this);
+    }
     // Update is called once per frame
     void Update()
     {

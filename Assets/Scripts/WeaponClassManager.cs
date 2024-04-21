@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 
-public class WeaponChange : MonoBehaviour
+public class WeaponClassManager : MonoBehaviour
 {
-    [SerializeField] public Rig[] rigs;
+    [SerializeField] public TwoBoneIKConstraint RHandIK;
+    [SerializeField] public TwoBoneIKConstraint IHandIK;
+    [SerializeField] public Rig rigs;
+
     [HideInInspector] public Animator anim;
+    
 
     public WeaponManager[] weapons;
     ActionStateManager actions;
@@ -28,6 +32,13 @@ public class WeaponChange : MonoBehaviour
     {
         WeaponSwap();
     }
+    public void SetCurrentWeapon(WeaponManager weapon)
+    {
+        if (actions == null) actions = GetComponent<ActionStateManager>();
+        IHandIK.data.target = weapon.IHandTarget;
+        RHandIK.data.target = weapon.RHandTarget;
+        actions.SetWeapon(weapon);
+    }
     public void WeaponSwap()
     {
 
@@ -42,10 +53,16 @@ public class WeaponChange : MonoBehaviour
         {
             WeaponSelect(1);
         }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            weapons[currentWeaponIndex].gameObject.SetActive(false);
+            anim.SetLayerWeight(1, 0);
+            //rigs.weight = 0;
+        }
     }
     public void WeaponSelect(int weaponIndex)
     {
-        //rig.weight = 1;
+        //rigs.weight = 1;
         //anim.SetLayerWeight(1, 1);
 
         if (currentWeaponIndex == weaponIndex) return;
@@ -56,18 +73,12 @@ public class WeaponChange : MonoBehaviour
 
         anim.SetTrigger("Swap");
     }
-    /*public void SetActiveRig(int rigIndex)
+    public void WeaponPutAway()
     {
-        // 모든 리깅을 비활성화합니다.
-        foreach (var rig in rigs)
-        {
-            rig.weight = 0f;
-        }
 
-        // 선택한 리깅을 활성화합니다.
-        if (rigIndex >= 0 && rigIndex < rigs.Length)
-        {
-            rigs[rigIndex].weight = 1f;
-        }
-    }*/
+    }
+    public void WeaponPulledOut()
+    {
+        actions.SwitchState(actions.Default);
+    }
 }
