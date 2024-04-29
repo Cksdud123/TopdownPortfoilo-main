@@ -29,10 +29,13 @@ public class WeaponManager : MonoBehaviour
     public Transform RHandTarget;
 
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         muzzleFlash = GetComponentInChildren<ParticleSystem>();
         actions = GetComponentInParent<ActionStateManager>();
+    }
+    void Start()
+    {
         fireRateTimer = fireRate;
     }
     private void OnEnable()
@@ -73,6 +76,9 @@ public class WeaponManager : MonoBehaviour
             Debug.Log("현재 남은 총알이 없습니다.");
         }
         Debug.Log(ammo.currentAmmo + "발사!!");
+
+        AmmoUI.instance.UpdateAmmoText(ammo.currentAmmo);
+        AmmoUI.instance.UpdateMagText(ammo.extraAmmo);
 
         TriggerMuzzleFlash(); // 총구 화염 효과 실행
 

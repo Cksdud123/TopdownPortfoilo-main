@@ -32,8 +32,14 @@ public class WeaponClassManager : MonoBehaviour
     public void SetCurrentWeapon(WeaponManager weapon)
     {
         if (actions == null) actions = GetComponent<ActionStateManager>();
+
+        // 현재 무기의 탄약 정보를 UI에 업데이트
+        AmmoUI.instance.UpdateAmmoText(weapon.ammo.currentAmmo);
+        AmmoUI.instance.UpdateMagText(weapon.ammo.extraAmmo);
+
         IHandIK.data.target = weapon.IHandTarget;
         RHandIK.data.target = weapon. RHandTarget;
+
         rigBuilder.Build();
         actions.SetWeapon(weapon);
     }
@@ -47,7 +53,7 @@ public class WeaponClassManager : MonoBehaviour
         {
             StartCoroutine(WeaponSelect(0));
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             StartCoroutine(WeaponSelect(1));
         }
@@ -84,14 +90,5 @@ public class WeaponClassManager : MonoBehaviour
         IHandIK.weight = 1;
         RHandIK.weight = 1;
         actions.SwitchState(actions.Default);
-    }
-    private WeaponManager GetActiveWeaponManager()
-    {
-        if (weapons == null || weapons.Length == 0)
-        {
-            return null;
-        }
-
-        return weapons[currentWeaponIndex];
     }
 }
