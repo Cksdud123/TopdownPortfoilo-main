@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - WeaponHandler
+  - WayPoints
+  - Dragon
   layers:
   - Default
   - TransparentFX

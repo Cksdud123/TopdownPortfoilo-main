@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Animations.Rigging;
 using UnityEngine;
+using Unity.Burst.Intrinsics;
 
 
 public class WeaponManager : MonoBehaviour
@@ -73,12 +74,6 @@ public class WeaponManager : MonoBehaviour
     {
         fireRateTimer = 0; // 발사 속도 타이머 초기화
         ammo.currentAmmo--; // 총알 소모
-
-        if (ammo.currentAmmo == 0)
-        {
-            Debug.Log("현재 남은 총알이 없습니다.");
-        }
-        Debug.Log(ammo.currentAmmo + "발사!!");
 
         AmmoUI.instance.UpdateAmmoText(ammo.currentAmmo);
         AmmoUI.instance.UpdateMagText(ammo.extraAmmo);
