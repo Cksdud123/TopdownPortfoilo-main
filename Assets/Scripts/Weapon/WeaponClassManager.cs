@@ -11,7 +11,8 @@ public class WeaponClassManager : MonoBehaviour
     [SerializeField] public Rig rigs;
 
     [HideInInspector] public Animator anim;
-    
+
+    public Transform recoilFollowPos;
 
     public WeaponManager[] weapons;
     ActionStateManager actions;

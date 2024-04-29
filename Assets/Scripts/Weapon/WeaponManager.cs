@@ -24,6 +24,7 @@ public class WeaponManager : MonoBehaviour
 
     private ActionStateManager actions;
     WeaponClassManager weaponClass;
+    WeaponRecoil recoil;
 
     public Transform IHandTarget;
     public Transform RHandTarget;
@@ -44,6 +45,8 @@ public class WeaponManager : MonoBehaviour
         {
             weaponClass = GetComponentInParent<WeaponClassManager>();
             ammo = GetComponent<WeaponAmmo>();
+            recoil = GetComponent<WeaponRecoil>();
+            recoil.recoilFollowPos = weaponClass.recoilFollowPos;
         }
         weaponClass.SetCurrentWeapon(this);
     }
@@ -81,6 +84,7 @@ public class WeaponManager : MonoBehaviour
         AmmoUI.instance.UpdateMagText(ammo.extraAmmo);
 
         TriggerMuzzleFlash(); // 총구 화염 효과 실행
+        recoil.TriggerRecoil();
 
         for (int i = 0; i < bulletsPerShot; i++) // 발사할 총알 개수만큼 반복
         {

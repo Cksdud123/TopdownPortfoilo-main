@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1678015347720571225}
   - component: {fileID: 770893372975511726}
   - component: {fileID: 7812106294556357277}
+  - component: {fileID: 7929673662494133197}
   m_Layer: 0
   m_Name: M4A1
   m_TagString: Untagged
@@ -74,6 +75,22 @@ MonoBehaviour:
   clipSize: 30
   extraAmmo: 60
   currentAmmo: 0
+--- !u!114 &7929673662494133197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121154039353796037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e81017a9808f83e4ab47377f82c4c084, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recoilFollowPos: {fileID: 0}
+  kickBackAmount: -0.5
+  kickBackSpeed: 3
+  returnSpeed: 6
 --- !u!1 &373874960203480207
 GameObject:
   m_ObjectHideFlags: 0

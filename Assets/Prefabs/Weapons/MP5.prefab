@@ -8504,6 +8504,7 @@ GameObject:
   - component: {fileID: 3923129520260282747}
   - component: {fileID: 1785119727983766096}
   - component: {fileID: 8990880896288458184}
+  - component: {fileID: 7172318674834599213}
   m_Layer: 0
   m_Name: MP5
   m_TagString: Untagged
@@ -8544,7 +8545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7769406ff57055e43b398fadb7c8f91b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 0.08
+  fireRate: 0.12
   semiAuto: 0
   bullet: {fileID: 5284228962491702552, guid: 8772d565437de2646b66f08436db84de, type: 3}
   barrelPos: {fileID: 0}
@@ -8569,6 +8570,22 @@ MonoBehaviour:
   clipSize: 30
   extraAmmo: 60
   currentAmmo: 0
+--- !u!114 &7172318674834599213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7995034220936146067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e81017a9808f83e4ab47377f82c4c084, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recoilFollowPos: {fileID: 0}
+  kickBackAmount: -1
+  kickBackSpeed: 10
+  returnSpeed: 20
 --- !u!1 &8140296074142169655
 GameObject:
   m_ObjectHideFlags: 0
