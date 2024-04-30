@@ -5326,10 +5326,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 1329291105}
     m_Modifications:
     - target: {fileID: 1785119727983766096, guid: 8e45ec37109a1dc4d9e9d75c79ab1e14, type: 3}
-      propertyPath: bullet
-      value: 
-      objectReference: {fileID: 7585385591861649615, guid: 91ff25cdebbce484f86ab8956cf067c9, type: 3}
-    - target: {fileID: 1785119727983766096, guid: 8e45ec37109a1dc4d9e9d75c79ab1e14, type: 3}
       propertyPath: barrelPos
       value: 
       objectReference: {fileID: 2830246128827824078}
@@ -5372,18 +5368,6 @@ PrefabInstance:
     - target: {fileID: 3923129520260282747, guid: 8e45ec37109a1dc4d9e9d75c79ab1e14, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 313.95502
-      objectReference: {fileID: 0}
-    - target: {fileID: 7172318674834599213, guid: 8e45ec37109a1dc4d9e9d75c79ab1e14, type: 3}
-      propertyPath: returnSpeed
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 7172318674834599213, guid: 8e45ec37109a1dc4d9e9d75c79ab1e14, type: 3}
-      propertyPath: kickBackSpeed
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7172318674834599213, guid: 8e45ec37109a1dc4d9e9d75c79ab1e14, type: 3}
-      propertyPath: kickBackAmount
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7995034220936146067, guid: 8e45ec37109a1dc4d9e9d75c79ab1e14, type: 3}
       propertyPath: m_Name
@@ -7271,14 +7255,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: M4A1
       objectReference: {fileID: 0}
-    - target: {fileID: 121154039353796037, guid: 9dc0632abf72a414f87dd0e2109376d4, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 770893372975511726, guid: 9dc0632abf72a414f87dd0e2109376d4, type: 3}
-      propertyPath: bullet
-      value: 
-      objectReference: {fileID: 7585385591861649615, guid: 91ff25cdebbce484f86ab8956cf067c9, type: 3}
     - target: {fileID: 1678015347720571225, guid: 9dc0632abf72a414f87dd0e2109376d4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.02099997
@@ -7318,18 +7294,6 @@ PrefabInstance:
     - target: {fileID: 1678015347720571225, guid: 9dc0632abf72a414f87dd0e2109376d4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 277.302
-      objectReference: {fileID: 0}
-    - target: {fileID: 7929673662494133197, guid: 9dc0632abf72a414f87dd0e2109376d4, type: 3}
-      propertyPath: returnSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7929673662494133197, guid: 9dc0632abf72a414f87dd0e2109376d4, type: 3}
-      propertyPath: kickBackSpeed
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7929673662494133197, guid: 9dc0632abf72a414f87dd0e2109376d4, type: 3}
-      propertyPath: kickBackAmount
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

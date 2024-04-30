@@ -17,6 +17,8 @@ public class RagdollManager : MonoBehaviour
     {
         foreach (Rigidbody rb in ragdollRigs)
         {
+            rb.angularDrag = 0.5f; // 회전 저항 증가
+            rb.drag = 0.5f; // 이동 저항 증가
             rb.isKinematic = state;
             rb.detectCollisions = !state; // 충돌 감지 활성화/비활성화
         }

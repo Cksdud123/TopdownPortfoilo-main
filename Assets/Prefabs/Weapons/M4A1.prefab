@@ -52,9 +52,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRate: 0.12
   semiAuto: 0
-  bullet: {fileID: 5284228962491702552, guid: 8772d565437de2646b66f08436db84de, type: 3}
+  bullet: {fileID: 7585385591861649615, guid: 91ff25cdebbce484f86ab8956cf067c9, type: 3}
   barrelPos: {fileID: 2263982725645496401}
-  bulletVelocity: 25
+  bulletVelocity: 100
   bulletsPerShot: 1
   damage: 20
   ammo: {fileID: 7812106294556357277}
@@ -88,9 +88,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recoilFollowPos: {fileID: 0}
-  kickBackAmount: -0.5
-  kickBackSpeed: 3
-  returnSpeed: 6
+  kickBackAmount: 1
+  kickBackSpeed: 2
+  returnSpeed: 10
 --- !u!1 &373874960203480207
 GameObject:
   m_ObjectHideFlags: 0

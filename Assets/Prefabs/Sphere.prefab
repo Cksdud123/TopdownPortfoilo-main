@@ -263,4 +263,5 @@ MonoBehaviour:
   timeToDestroy: 3
   weapon: {fileID: 0}
   dir: {x: 0, y: 0, z: 0}
+  bloodEffect: {fileID: 3198374318725026878, guid: bc9d167aef921d645803f44356c0031d, type: 3}
   DamageAmount: 20

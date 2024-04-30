@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
         HP -= damageAmount;
         if (HP <= 0)
         {
-            Die(); // HP가 0 이하이면 Die 함수 호출
+            Die();
         }
         else
         {
