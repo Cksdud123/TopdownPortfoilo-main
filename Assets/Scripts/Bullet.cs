@@ -19,9 +19,9 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Destroy(transform.GetComponent<Rigidbody>());
-        if(other.tag == "Dragon")
+        if(other.tag == "Enemy")
         {
-            other.GetComponent<Dragon>().TakeDamage(DamageAmount);
+            other.GetComponent<Enemy>().TakeDamage(DamageAmount);
         }
     }
 }
