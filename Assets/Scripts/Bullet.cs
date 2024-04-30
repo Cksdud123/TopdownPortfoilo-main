@@ -18,10 +18,13 @@ public class Bullet : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(transform.GetComponent<Rigidbody>());
-        if(other.tag == "Enemy")
+        if (other.gameObject.GetComponentInParent<Enemy>())
         {
-            other.GetComponent<Enemy>().TakeDamage(DamageAmount);
+            Enemy enemyHealth = other.gameObject.GetComponentInParent<Enemy>();
+            enemyHealth.TakeDamage(DamageAmount);
+
+            Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
+            rb.AddForce(dir * weapon.enemyKickbackForce, ForceMode.Impulse);
         }
     }
 }

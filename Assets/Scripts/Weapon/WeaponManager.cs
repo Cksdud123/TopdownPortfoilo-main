@@ -30,6 +30,8 @@ public class WeaponManager : MonoBehaviour
     public Transform IHandTarget;
     public Transform RHandTarget;
 
+    public float enemyKickbackForce = 10f;
+
     // Start is called before the first frame update
     private void Awake()
     {

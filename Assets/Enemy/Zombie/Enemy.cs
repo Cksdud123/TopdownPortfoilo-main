@@ -1,13 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
     public int HP = 100;
     public Animator animator;
-    public CapsuleCollider capsuleCollider; // 캡슐 콜라이더 참조
+    RagdollManager ragdollManager;
+    NavMeshAgent navMeshAgent;
 
+    private Rigidbody rb;
+    private void Start()
+    {
+        navMeshAgent = GetComponent<NavMeshAgent>();
+        ragdollManager = GetComponent<RagdollManager>();
+    }
     public void TakeDamage(int damageAmount)
     {
         HP -= damageAmount;
@@ -23,17 +31,20 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
-        // 애니메이션 트리거 설정
-        animator.SetTrigger("Die");
-
-        // 캡슐 콜라이더 비활성화
-        if (capsuleCollider != null)
+        if (ragdollManager != null)
         {
-            capsuleCollider.enabled = false;
+            // RagdollManager가 존재할 때만 Ragdoll 활성화
+            ragdollManager.setRigidbodyState(false);
+            ragdollManager.setColliderState(true);
         }
 
+        navMeshAgent.enabled = false;
+
+        // 애니메이션 비활성화
+        animator.enabled = false;
+
         // 오브젝트 일정 시간 후 제거
-        StartCoroutine(DestroyAfterDelay(10f)); // 3초 후에 제거
+        StartCoroutine(DestroyAfterDelay(10f)); // 10초 후에 제거
     }
 
     private IEnumerator DestroyAfterDelay(float delay)
