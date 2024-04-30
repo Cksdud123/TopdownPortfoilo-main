@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Animations.Rigging;
 using UnityEngine;
+using UnityEngine.Pool;
 using Unity.Burst.Intrinsics;
 
 
@@ -13,7 +14,7 @@ public class WeaponManager : MonoBehaviour
     float fireRateTimer; // 발사 속도 타이머
 
     [Header("Bullet Properties")]
-    [SerializeField] GameObject bullet; // 발사할 총알 프리팹
+    [SerializeField] GameObject bulletPrefabs; // 발사할 총알 프리팹
     [SerializeField] Transform barrelPos; // 총구 위치
     [SerializeField] float bulletVelocity; // 총알 발사 속도
     [SerializeField] int bulletsPerShot; // 발사할 총알 개수
@@ -30,11 +31,14 @@ public class WeaponManager : MonoBehaviour
     public Transform IHandTarget;
     public Transform RHandTarget;
 
+    private IObjectPool<Bullet> bulletPool;
+
     // Start is called before the first frame update
     private void Awake()
     {
         muzzleFlash = GetComponentInChildren<ParticleSystem>();
         actions = GetComponentInParent<ActionStateManager>();
+        bulletPool = new ObjectPool<Bullet>(CreateBullet, OnGetBullet, OnReleaseBullet, OnDestroyBullet, maxSize:30);
     }
     void Start()
     {
@@ -83,19 +87,40 @@ public class WeaponManager : MonoBehaviour
 
         for (int i = 0; i < bulletsPerShot; i++) // 발사할 총알 개수만큼 반복
         {
-            GameObject currentBullet = Instantiate(bullet, barrelPos.position, barrelPos.rotation); // 총알 생성
+            //GameObject currentBullet = Instantiate(bullet, barrelPos.position, barrelPos.rotation); // 총알 생성
+            var bullet = bulletPool.Get();
 
-            Bullet bulletScript = currentBullet.GetComponent<Bullet>(); // 총알 스크립트 가져오기
+            Bullet bulletScript = bullet.GetComponent<Bullet>(); // 총알 스크립트 가져오기
             bulletScript.weapon = this; // 총기 정보 설정
 
             bulletScript.dir = barrelPos.transform.forward; // 총알 방향 설정
 
-            Rigidbody rb = currentBullet.GetComponent<Rigidbody>(); // 총알 Rigidbody 컴포넌트 가져오기
+            Rigidbody rb = bullet.GetComponent<Rigidbody>(); // 총알 Rigidbody 컴포넌트 가져오기
             rb.AddForce(barrelPos.forward * bulletVelocity, ForceMode.Impulse); // 총알에 힘을 가해 발사
         }
     }
     private void TriggerMuzzleFlash()
     {
         muzzleFlash.Play();
+    }
+
+    // 오브젝트 풀
+    private Bullet CreateBullet()
+    {
+        Bullet bullet = Instantiate(bulletPrefabs,barrelPos.position,barrelPos.rotation).GetComponent<Bullet>();
+        bullet.SetManagedPool(bulletPool);
+        return bullet;
+    }
+    private void OnGetBullet(Bullet bullet)
+    {
+        bullet.gameObject.SetActive(true);
+    }
+    private void OnReleaseBullet(Bullet bullet)
+    {
+        bullet.gameObject.SetActive(false);
+    }
+    private void OnDestroyBullet(Bullet bullet)
+    {
+        Destroy(bullet.gameObject);
     }
 }

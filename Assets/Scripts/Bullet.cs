@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.PackageManager;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class Bullet : MonoBehaviour
 {
@@ -13,11 +14,17 @@ public class Bullet : MonoBehaviour
 
     public int DamageAmount = 20;
 
+    private IObjectPool<Bullet> ManagePool;
+
     // Start is called before the first frame update
     void Start()
     {
-        // 일정 시간이 지난 후 자동으로 파괴되도록 설정
-        Destroy(this.gameObject, timeToDestroy);
+        //Destroy(this.gameObject, timeToDestroy);
+        Invoke("DestroyBullet", 5f);
+    }
+    public void SetManagedPool(IObjectPool<Bullet> pool)
+    {
+        ManagePool = pool;
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -38,5 +45,9 @@ public class Bullet : MonoBehaviour
                 Destroy(bloodEffectGo, 1f); // 일정 시간 후에 블러드 이펙트 제거
             }
         }
+    }
+    public void DestroyBullet()
+    {
+        ManagePool.Release(this);
     }
 }
