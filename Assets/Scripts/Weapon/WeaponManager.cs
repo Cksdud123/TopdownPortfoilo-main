@@ -114,14 +114,24 @@ public class WeaponManager : MonoBehaviour
     }
     private void OnGetBullet(Bullet bullet)
     {
-        bullet.transform.position = barrelPos.position;
-        bullet.transform.rotation = barrelPos.rotation;
+        bullet.transform.SetParent(null); // 이전의 부모 계층에서 분리
+        bullet.transform.position = barrelPos.position; // 총알의 위치를 총구의 위치로 설정
+        bullet.transform.rotation = barrelPos.rotation; // 총알의 회전을 총구의 회전으로 설정
+
+        // 총알의 Rigidbody 초기화
+        Rigidbody rb = bullet.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+        }
+
         bullet.gameObject.SetActive(true);
     }
+
     private void OnReleaseBullet(Bullet bullet)
     {
         bullet.gameObject.SetActive(false); // 게임 오브젝트 비활성화
-        //bullet.trail.Clear();
     }
     private void OnDestroyBullet(Bullet bullet)
     {

@@ -15,7 +15,16 @@ public class Bullet : MonoBehaviour
     public int DamageAmount = 20;
 
     private IObjectPool<Bullet> ManagePool;
+    public TrailRenderer trail;
 
+    void Awake()
+    {
+        trail = GetComponent<TrailRenderer>();
+    }
+    void OnEnable()
+    {
+        trail.Clear();
+    }
     // Start is called before the first frame update
     void Start()
     {
