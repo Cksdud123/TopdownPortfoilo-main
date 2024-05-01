@@ -15,17 +15,12 @@ public class Bullet : MonoBehaviour
     public int DamageAmount = 20;
 
     private IObjectPool<Bullet> ManagePool;
-    public TrailRenderer trail;
 
-    void Awake()
-    {
-        trail = GetComponent<TrailRenderer>();
-    }
     // Start is called before the first frame update
     void Start()
     {
         //Destroy(this.gameObject, timeToDestroy);
-        Invoke("DestroyBullet", 1f);
+        Invoke("DestroyBullet", 3f);
     }
     public void SetManagedPool(IObjectPool<Bullet> pool)
     {
