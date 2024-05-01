@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int damageAmount)
     {
         HP -= damageAmount;
+        Debug.Log("총알 맞음!! 현재 체력" + HP);
         if (HP <= 0)
         {
             Die();

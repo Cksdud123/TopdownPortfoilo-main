@@ -38,7 +38,7 @@ public class WeaponManager : MonoBehaviour
     {
         muzzleFlash = GetComponentInChildren<ParticleSystem>();
         actions = GetComponentInParent<ActionStateManager>();
-        bulletPool = new ObjectPool<Bullet>(CreateBullet, OnGetBullet, OnReleaseBullet, OnDestroyBullet, maxSize:30);
+        bulletPool = new ObjectPool<Bullet>(CreateBullet, OnGetBullet, OnReleaseBullet, OnDestroyBullet, maxSize: 15);
     }
     void Start()
     {
@@ -97,6 +97,7 @@ public class WeaponManager : MonoBehaviour
 
             Rigidbody rb = bullet.GetComponent<Rigidbody>(); // 총알 Rigidbody 컴포넌트 가져오기
             rb.AddForce(barrelPos.forward * bulletVelocity, ForceMode.Impulse); // 총알에 힘을 가해 발사
+            Debug.Log("bullet 위치" + bullet.transform.position);
         }
     }
     private void TriggerMuzzleFlash()
@@ -113,11 +114,14 @@ public class WeaponManager : MonoBehaviour
     }
     private void OnGetBullet(Bullet bullet)
     {
+        bullet.transform.position = barrelPos.position;
+        bullet.transform.rotation = barrelPos.rotation;
         bullet.gameObject.SetActive(true);
     }
     private void OnReleaseBullet(Bullet bullet)
     {
-        bullet.gameObject.SetActive(false);
+        bullet.gameObject.SetActive(false); // 게임 오브젝트 비활성화
+        //bullet.trail.Clear();
     }
     private void OnDestroyBullet(Bullet bullet)
     {
