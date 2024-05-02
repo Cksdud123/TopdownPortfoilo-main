@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Assertions;
 
 public class Spawner : MonoBehaviour
@@ -71,7 +72,16 @@ public class Spawner : MonoBehaviour
     // 적을 실제로 스폰하는 메서드
     public void SpawnEnemy(GameObject enemy)
     {
-        GameObject go = Instantiate(enemy, this.transform.position, Quaternion.identity); // 적 생성
+        var zombieGo = ObjectPoolingManager.instance.GetGo("Zombie");
+
+        zombieGo.transform.position = transform.position;
+        zombieGo.transform.rotation = Quaternion.identity;
+
+        Enemy enemyScript = zombieGo.GetComponent<Enemy>();
+        if (enemyScript != null)
+        {
+            enemyScript.ActiveEnemy(); // Enemy 초기화
+        }
     }
 
     private void NormalizeSpawnRates()

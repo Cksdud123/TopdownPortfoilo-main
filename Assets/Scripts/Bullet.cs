@@ -4,34 +4,25 @@ using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class Bullet : MonoBehaviour
+public class Bullet : PoolAble
 {
-    [SerializeField] float timeToDestroy; // 생성 후 일정 시간이 지난 후 자동으로 파괴될 시간
     [HideInInspector] public WeaponManager weapon; // 총기 정보를 가지고 있는 WeaponManager 객체
     [HideInInspector] public Vector3 dir; // 총알이 발사된 방향 벡터
 
     public GameObject bloodEffect;
 
     public int DamageAmount = 20;
-
-    private IObjectPool<Bullet> ManagePool;
-
     // Start is called before the first frame update
     void Start()
     {
-        //Destroy(this.gameObject, timeToDestroy);
         Invoke("DestroyBullet", 3f);
     }
-    public void SetManagedPool(IObjectPool<Bullet> pool)
-    {
-        ManagePool = pool;
-    }
+
     private void OnTriggerEnter(Collider other)
     {
         // 충돌한 오브젝트가 Enemy 태그를 가진 오브젝트인지 확인
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
-            // 충돌한 오브젝트가 Enemy 스크립트를 가지고 있는지 확인
             Enemy enemyHealth = other.GetComponentInParent<Enemy>();
 
             if (enemyHealth != null)
@@ -52,9 +43,8 @@ public class Bullet : MonoBehaviour
             }
         }
     }
-
     public void DestroyBullet()
     {
-        ManagePool.Release(this);
+        ReleaseObject();
     }
 }

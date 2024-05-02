@@ -32,14 +32,11 @@ public class WeaponManager : MonoBehaviour
     public Transform IHandTarget;
     public Transform RHandTarget;
 
-    private IObjectPool<Bullet> bulletPool;
-
     // Start is called before the first frame update
     private void Awake()
     {
         muzzleFlash = GetComponentInChildren<ParticleSystem>();
         actions = GetComponentInParent<ActionStateManager>();
-        bulletPool = new ObjectPool<Bullet>(CreateBullet, OnGetBullet, OnReleaseBullet, OnDestroyBullet, maxSize: 15);
     }
     void Start()
     {
@@ -88,17 +85,7 @@ public class WeaponManager : MonoBehaviour
 
         for (int i = 0; i < bulletsPerShot; i++) // 발사할 총알 개수만큼 반복
         {
-            //GameObject currentBullet = Instantiate(bullet, barrelPos.position, barrelPos.rotation); // 총알 생성
-            var bullet = bulletPool.Get();
-
-            Bullet bulletScript = bullet.GetComponent<Bullet>(); // 총알 스크립트 가져오기
-            bulletScript.weapon = this; // 총기 정보 설정
-
-            bulletScript.dir = barrelPos.transform.forward; // 총알 방향 설정
-
-            Rigidbody rb = bullet.GetComponent<Rigidbody>(); // 총알 Rigidbody 컴포넌트 가져오기
-            rb.AddForce(barrelPos.forward * bulletVelocity, ForceMode.Impulse); // 총알에 힘을 가해 발사
-            Debug.Log("barrelPos.forward: " + barrelPos.rotation);
+            Bullet();
         }
     }
 
@@ -106,37 +93,29 @@ public class WeaponManager : MonoBehaviour
     {
         muzzleFlash.Play();
     }
+    public void Bullet()
+    {
+        //GameObject currentBullet = Instantiate(bullet, barrelPos.position, barrelPos.rotation); // 총알 생성
 
-    // 오브젝트 풀
-    private Bullet CreateBullet()
-    {
-        Bullet bullet = Instantiate(bulletPrefabs,barrelPos.position,barrelPos.rotation).GetComponent<Bullet>();
-        bullet.SetManagedPool(bulletPool);
-        return bullet;
-    }
-    private void OnGetBullet(Bullet bullet)
-    {
-        bullet.transform.SetParent(null); // 이전의 부모 계층에서 분리
-        bullet.transform.position = barrelPos.position; // 총알의 위치를 총구의 위치로 설정
-        bullet.transform.rotation = barrelPos.rotation; // 총알의 회전을 총구의 회전으로 설정
+        var bulletGo = ObjectPoolingManager.instance.GetGo("Bullet");
+
+        bulletGo.transform.position = barrelPos.position; // 총알의 위치를 총구의 위치로 설정
+        bulletGo.transform.rotation = barrelPos.rotation; // 총알의 회전을 총구의 회전으로 설정
 
         // 총알의 Rigidbody 초기화
-        Rigidbody rb = bullet.GetComponent<Rigidbody>();
+        Rigidbody rb = bulletGo.GetComponent<Rigidbody>();
         if (rb != null)
         {
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
         }
 
-        bullet.gameObject.SetActive(true);
-    }
+        Bullet bulletScript = bulletGo.GetComponent<Bullet>(); // 총알 스크립트 가져오기
+        bulletScript.weapon = this; // 총기 정보 설정
 
-    private void OnReleaseBullet(Bullet bullet)
-    {
-        bullet.gameObject.SetActive(false); // 게임 오브젝트 비활성화
-    }
-    private void OnDestroyBullet(Bullet bullet)
-    {
-        Destroy(bullet.gameObject);
+        bulletScript.dir = barrelPos.transform.forward; // 총알 방향 설정
+
+        rb = bulletGo.GetComponent<Rigidbody>(); // 총알 Rigidbody 컴포넌트 가져오기
+        rb.AddForce(barrelPos.forward * bulletVelocity, ForceMode.Impulse); // 총알에 힘을 가해 발사
     }
 }
