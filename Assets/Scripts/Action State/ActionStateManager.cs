@@ -1,11 +1,15 @@
 using Cinemachine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.Intrinsics;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
+using UnityEngine.UIElements;
 
 public class ActionStateManager : MonoBehaviour
 {
+    [Header("Aim")]
     [SerializeField] LayerMask groundMask;
 
     public ActionBaseState currentState;
@@ -20,8 +24,6 @@ public class ActionStateManager : MonoBehaviour
     [HideInInspector] public WeaponManager currentWeapon;
     [HideInInspector] public WeaponAmmo ammo;
     [HideInInspector] public CinemachineVirtualCamera vCam;
-
-    
 
     public float AimingFov = 50f;
     [HideInInspector] public float IdleFov;
@@ -49,7 +51,7 @@ public class ActionStateManager : MonoBehaviour
     }
     private void LateUpdate()
     {
-        AimCamera();
+        Aim();
     }
     // Update is called once per frame
     public void SwitchState(ActionBaseState state)
@@ -71,42 +73,35 @@ public class ActionStateManager : MonoBehaviour
         ammo = weapon.ammo;
     }
 
-    public void AimCamera()
+    private void Aim()
     {
         var (success, position) = GetMousePosition();
         if (success)
         {
+            // 조준 방향 계산
             var direction = position - transform.position;
 
+            // 높이 차이 무시
             direction.y = 0;
 
+            // Transform을 마우스 위치로 회전
             transform.forward = direction;
         }
     }
+
+    // 마우스 위치에 따른 땅 위치 반환
     private (bool success, Vector3 position) GetMousePosition()
     {
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
+        // 땅 위치 감지를 위한 레이캐스트 실행
         if (Physics.Raycast(ray, out var hitInfo, Mathf.Infinity, groundMask))
         {
-
             return (success: true, position: hitInfo.point);
         }
         else
         {
             return (success: false, position: Vector3.zero);
-        }
-    }
-    private void OnDrawGizmos()
-    {
-        var (success, position) = GetMousePosition();
-        if (success)
-        {
-            var direction = position - transform.position;
-            direction.y = 0;
-
-            Gizmos.color = Color.red;
-            Gizmos.DrawLine(transform.position, transform.position + direction);
         }
     }
 }

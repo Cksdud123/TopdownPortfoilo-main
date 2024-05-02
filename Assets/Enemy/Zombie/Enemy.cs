@@ -36,7 +36,7 @@ public class Enemy : MonoBehaviour
         {
             // RagdollManager가 존재할 때만 Ragdoll 활성화
             ragdollManager.setRigidbodyState(false);
-            ragdollManager.setColliderState(true);
+            ragdollManager.setRigidbodyState(false);
         }
 
         navMeshAgent.enabled = false;

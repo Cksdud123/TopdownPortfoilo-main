@@ -4,6 +4,7 @@ using UnityEngine.Animations.Rigging;
 using UnityEngine;
 using UnityEngine.Pool;
 using Unity.Burst.Intrinsics;
+using UnityEngine.UIElements;
 
 
 public class WeaponManager : MonoBehaviour
@@ -97,9 +98,10 @@ public class WeaponManager : MonoBehaviour
 
             Rigidbody rb = bullet.GetComponent<Rigidbody>(); // 총알 Rigidbody 컴포넌트 가져오기
             rb.AddForce(barrelPos.forward * bulletVelocity, ForceMode.Impulse); // 총알에 힘을 가해 발사
-            Debug.Log("bullet 위치" + bullet.transform.position);
+            Debug.Log("barrelPos.forward: " + barrelPos.rotation);
         }
     }
+
     private void TriggerMuzzleFlash()
     {
         muzzleFlash.Play();

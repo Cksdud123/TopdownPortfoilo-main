@@ -15,16 +15,7 @@ public class Bullet : MonoBehaviour
     public int DamageAmount = 20;
 
     private IObjectPool<Bullet> ManagePool;
-    public TrailRenderer trail;
 
-    void Awake()
-    {
-        trail = GetComponent<TrailRenderer>();
-    }
-    void OnEnable()
-    {
-        trail.Clear();
-    }
     // Start is called before the first frame update
     void Start()
     {
@@ -37,24 +28,31 @@ public class Bullet : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponentInParent<Enemy>())
+        // 충돌한 오브젝트가 Enemy 태그를 가진 오브젝트인지 확인
+        if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
-            Enemy enemyHealth = other.gameObject.GetComponentInParent<Enemy>();
-            enemyHealth.TakeDamage(DamageAmount);
+            // 충돌한 오브젝트가 Enemy 스크립트를 가지고 있는지 확인
+            Enemy enemyHealth = other.GetComponentInParent<Enemy>();
 
-            // 적의 위치에 블러드 이펙트 생성
-            if (bloodEffect != null)
+            if (enemyHealth != null)
             {
-                // 충돌 지점과 방향 설정
-                Vector3 hitPoint = other.ClosestPointOnBounds(transform.position);
-                Vector3 hitNormal = (hitPoint - enemyHealth.transform.position).normalized;
+                // Enemy 스크립트가 있는 경우, 데미지를 주고 블러드 이펙트 생성
+                enemyHealth.TakeDamage(DamageAmount);
 
-                // 블러드 이펙트 생성
-                GameObject bloodEffectGo = Instantiate(bloodEffect, hitPoint, Quaternion.LookRotation(hitNormal));
-                Destroy(bloodEffectGo, 1f); // 일정 시간 후에 블러드 이펙트 제거
+                if (bloodEffect != null)
+                {
+                    // 충돌 지점과 방향 설정
+                    Vector3 hitPoint = other.ClosestPointOnBounds(transform.position);
+                    Vector3 hitNormal = (hitPoint - enemyHealth.transform.position).normalized;
+
+                    // 블러드 이펙트 생성
+                    GameObject bloodEffectGo = Instantiate(bloodEffect, hitPoint, Quaternion.LookRotation(hitNormal));
+                    Destroy(bloodEffectGo, 1f); // 일정 시간 후에 블러드 이펙트 제거
+                }
             }
         }
     }
+
     public void DestroyBullet()
     {
         ManagePool.Release(this);

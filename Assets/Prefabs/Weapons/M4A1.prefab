@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1678015347720571225
 Transform:
   m_ObjectHideFlags: 0
@@ -52,7 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRate: 0.12
   semiAuto: 0
-  bulletPrefabs: {fileID: 7585385591861649615, guid: 91ff25cdebbce484f86ab8956cf067c9, type: 3}
+  bulletPrefabs: {fileID: 5284228962491702552, guid: 8772d565437de2646b66f08436db84de, type: 3}
   barrelPos: {fileID: 2263982725645496401}
   bulletVelocity: 100
   bulletsPerShot: 1
