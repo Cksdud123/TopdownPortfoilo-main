@@ -1664,9 +1664,6 @@ MonoBehaviour:
   - objectName: Zombie
     perfab: {fileID: 221861033526913143, guid: 2f8114ac5a22bdf408bac505dd1b0e9b, type: 3}
     count: 5
-  - objectName: Bullet
-    perfab: {fileID: 7585385591861649615, guid: 91ff25cdebbce484f86ab8956cf067c9, type: 3}
-    count: 30
 --- !u!1 &1611617648
 GameObject:
   m_ObjectHideFlags: 0
@@ -3879,9 +3876,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2830246128827824078}
     - target: {fileID: 1785119727983766096, guid: 8e45ec37109a1dc4d9e9d75c79ab1e14, type: 3}
+      propertyPath: bloodEffect
+      value: 
+      objectReference: {fileID: 3198374318725026878, guid: bc9d167aef921d645803f44356c0031d, type: 3}
+    - target: {fileID: 1785119727983766096, guid: 8e45ec37109a1dc4d9e9d75c79ab1e14, type: 3}
       propertyPath: bulletPrefabs
       value: 
       objectReference: {fileID: 7585385591861649615, guid: 91ff25cdebbce484f86ab8956cf067c9, type: 3}
+    - target: {fileID: 1785119727983766096, guid: 8e45ec37109a1dc4d9e9d75c79ab1e14, type: 3}
+      propertyPath: shootingRange
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1785119727983766096, guid: 8e45ec37109a1dc4d9e9d75c79ab1e14, type: 3}
+      propertyPath: bulletVelocity
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 3923129520260282747, guid: 8e45ec37109a1dc4d9e9d75c79ab1e14, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.0461
@@ -4616,9 +4625,17 @@ PrefabInstance:
       value: M4A1
       objectReference: {fileID: 0}
     - target: {fileID: 770893372975511726, guid: 9dc0632abf72a414f87dd0e2109376d4, type: 3}
+      propertyPath: bloodEffect
+      value: 
+      objectReference: {fileID: 3198374318725026878, guid: bc9d167aef921d645803f44356c0031d, type: 3}
+    - target: {fileID: 770893372975511726, guid: 9dc0632abf72a414f87dd0e2109376d4, type: 3}
       propertyPath: bulletPrefabs
       value: 
       objectReference: {fileID: 7585385591861649615, guid: 91ff25cdebbce484f86ab8956cf067c9, type: 3}
+    - target: {fileID: 770893372975511726, guid: 9dc0632abf72a414f87dd0e2109376d4, type: 3}
+      propertyPath: shootingRange
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 770893372975511726, guid: 9dc0632abf72a414f87dd0e2109376d4, type: 3}
       propertyPath: bulletVelocity
       value: 100
@@ -4686,6 +4703,10 @@ PrefabInstance:
     - target: {fileID: 2263982725645496401, guid: 9dc0632abf72a414f87dd0e2109376d4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7812106294556357277, guid: 9dc0632abf72a414f87dd0e2109376d4, type: 3}
+      propertyPath: clipSize
+      value: 1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

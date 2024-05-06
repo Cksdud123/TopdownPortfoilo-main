@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine.Animations.Rigging;
 using UnityEngine;
 using UnityEngine.Pool;
-using Unity.Burst.Intrinsics;
-using UnityEngine.UIElements;
 
 
 public class WeaponManager : MonoBehaviour
@@ -31,6 +29,9 @@ public class WeaponManager : MonoBehaviour
 
     public Transform IHandTarget;
     public Transform RHandTarget;
+
+    public float shootingRange = 100f;
+    public GameObject bloodEffect;
 
     // Start is called before the first frame update
     private void Awake()
@@ -95,26 +96,18 @@ public class WeaponManager : MonoBehaviour
     }
     public void Bullet()
     {
-        //GameObject currentBullet = Instantiate(bullet, barrelPos.position, barrelPos.rotation); // 총알 생성
+        RaycastHit hitInfo;
 
-        var bulletGo = ObjectPoolingManager.instance.GetGo("Bullet");
-
-        bulletGo.transform.position = barrelPos.position; // 총알의 위치를 총구의 위치로 설정
-        bulletGo.transform.rotation = barrelPos.rotation; // 총알의 회전을 총구의 회전으로 설정
-
-        // 총알의 Rigidbody 초기화
-        Rigidbody rb = bulletGo.GetComponent<Rigidbody>();
-        if (rb != null)
+        if (Physics.Raycast(barrelPos.transform.position, barrelPos.transform.forward, out hitInfo, shootingRange))
         {
-            rb.velocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero;
+            Enemy enemy = hitInfo.transform.GetComponentInParent<Enemy>();
+
+            if (enemy != null)
+            {
+                enemy.TakeDamage(20);
+                GameObject bloodEffectGo = Instantiate(bloodEffect, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
+                Destroy(bloodEffectGo, 1f);
+            }
         }
-
-        Bullet bulletScript = bulletGo.GetComponent<Bullet>(); // 총알 스크립트 가져오기
-        bulletScript.weapon = this; // 총기 정보 설정
-
-        bulletScript.dir = barrelPos.transform.forward; // 총알 방향 설정
-
-        rb.AddForce(barrelPos.forward * bulletVelocity, ForceMode.Impulse); // 총알에 힘을 가해 발사
     }
 }
