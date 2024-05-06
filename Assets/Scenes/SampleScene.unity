@@ -1664,6 +1664,9 @@ MonoBehaviour:
   - objectName: Zombie
     perfab: {fileID: 221861033526913143, guid: 2f8114ac5a22bdf408bac505dd1b0e9b, type: 3}
     count: 5
+  - objectName: BloodEffect
+    perfab: {fileID: 3198374318725026878, guid: bc9d167aef921d645803f44356c0031d, type: 3}
+    count: 20
 --- !u!1 &1611617648
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,7 +13,6 @@ public class WeaponManager : MonoBehaviour
     float fireRateTimer; // 발사 속도 타이머
 
     [Header("Bullet Properties")]
-    [SerializeField] GameObject bulletPrefabs; // 발사할 총알 프리팹
     [SerializeField] Transform barrelPos; // 총구 위치
     [SerializeField] float bulletVelocity; // 총알 발사 속도
     [SerializeField] int bulletsPerShot; // 발사할 총알 개수
@@ -105,8 +104,10 @@ public class WeaponManager : MonoBehaviour
             if (enemy != null)
             {
                 enemy.TakeDamage(20);
-                GameObject bloodEffectGo = Instantiate(bloodEffect, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
-                Destroy(bloodEffectGo, 1f);
+
+                var bloodEffectGo = ObjectPoolingManager.instance.GetGo("BloodEffect");
+                bloodEffectGo.transform.position = hitInfo.point;
+                bloodEffectGo.transform.rotation = Quaternion.LookRotation(hitInfo.normal);
             }
         }
     }

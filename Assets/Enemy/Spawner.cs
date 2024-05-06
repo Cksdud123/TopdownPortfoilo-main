@@ -79,7 +79,7 @@ public class Spawner : MonoBehaviour
         enemyGo.transform.position = transform.position;
         enemyGo.transform.rotation = Quaternion.identity;
 
-        enemyGo.HP = 39;
+        enemyGo.HP = 100;
         enemyGo.navMeshAgent.enabled = true;
         enemyGo.animator.enabled = true;
         enemyGo.enabled = true;
