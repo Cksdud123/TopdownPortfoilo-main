@@ -1784,6 +1784,13 @@ MonoBehaviour:
   runBackSpeed: 5
   dir: {x: 0, y: 0, z: 0}
   anim: {fileID: 0}
+  groundYOffset: -0.17
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 64
+  gravity: -9.81
+  jumpForce: 10
+  jumped: 0
 --- !u!95 &1712114710
 Animator:
   serializedVersion: 5
