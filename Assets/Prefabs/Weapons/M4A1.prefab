@@ -52,7 +52,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRate: 0.12
   semiAuto: 0
-  bulletPrefabs: {fileID: 5284228962491702552, guid: 8772d565437de2646b66f08436db84de, type: 3}
   barrelPos: {fileID: 2263982725645496401}
   bulletVelocity: 100
   bulletsPerShot: 1
@@ -60,6 +59,8 @@ MonoBehaviour:
   ammo: {fileID: 7812106294556357277}
   IHandTarget: {fileID: 2614752821129590520}
   RHandTarget: {fileID: 6531734362435047336}
+  shootingRange: 200
+  bloodEffect: {fileID: 3198374318725026878, guid: bc9d167aef921d645803f44356c0031d, type: 3}
 --- !u!114 &7812106294556357277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72,7 +73,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40b067936d3c5ef4c99a390dfec1cc1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clipSize: 30
+  clipSize: 1000
   extraAmmo: 60
   currentAmmo: 0
 --- !u!114 &7929673662494133197

@@ -72,7 +72,8 @@ public class Spawner : MonoBehaviour
     // 적을 실제로 스폰하는 메서드
     public void SpawnEnemy(GameObject enemy)
     {
-        var zombieGo = ObjectPoolingManager.instance.GetGo("Zombie");
+        Debug.Log("Spawning enemy: " + enemy.name);
+        var zombieGo = ObjectPoolingManager.instance.GetGo(enemy.name);
 
         Enemy enemyGo = zombieGo.GetComponent<Enemy>();
 

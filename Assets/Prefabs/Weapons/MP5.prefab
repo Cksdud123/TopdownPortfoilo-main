@@ -8547,14 +8547,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRate: 0.12
   semiAuto: 0
-  bulletPrefabs: {fileID: 5284228962491702552, guid: 8772d565437de2646b66f08436db84de, type: 3}
   barrelPos: {fileID: 0}
-  bulletVelocity: 80
+  bulletVelocity: 100
   bulletsPerShot: 1
   damage: 15
   ammo: {fileID: 8990880896288458184}
   IHandTarget: {fileID: 6411332217400562931}
   RHandTarget: {fileID: 7478185021060830112}
+  shootingRange: 200
+  bloodEffect: {fileID: 3198374318725026878, guid: bc9d167aef921d645803f44356c0031d, type: 3}
 --- !u!114 &8990880896288458184
 MonoBehaviour:
   m_ObjectHideFlags: 0

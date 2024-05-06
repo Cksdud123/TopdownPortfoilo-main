@@ -9,11 +9,13 @@ public class Enemy : PoolAble
     public Animator animator;
     [HideInInspector] public RagdollManager ragdollManager;
     [HideInInspector] public NavMeshAgent navMeshAgent;
+    [HideInInspector] public ExperienceManager experienceManager;
 
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         ragdollManager = GetComponent<RagdollManager>();
+        experienceManager = FindObjectOfType<ExperienceManager>();
     }
     private void Start()
     {
@@ -36,6 +38,7 @@ public class Enemy : PoolAble
 
     private void Die()
     {
+        experienceManager.AddExperience(5);
         DeactiveEnemy();
         StartCoroutine(ReleaseZombieAfterDelay(5f));
     }
