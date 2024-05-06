@@ -10,7 +10,6 @@ public class RagdollManager : MonoBehaviour
     private void Start()
     {
         setRigidbodyState(true);
-        setColliderState(true);
     }
     public void setRigidbodyState(bool state)
     {
@@ -18,14 +17,6 @@ public class RagdollManager : MonoBehaviour
         foreach(Rigidbody rb in ragdollRigs)
         {
             rb.isKinematic = state;
-        }
-    }
-    public void setColliderState(bool state)
-    {
-        Collider[] colliders = zombie.GetComponentsInChildren<Collider>();
-        foreach (Collider col in colliders)
-        {
-            col.enabled = state;
         }
     }
 }

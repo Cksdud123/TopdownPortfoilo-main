@@ -76,8 +76,8 @@ GameObject:
   - component: {fileID: 691188349532947889}
   - component: {fileID: 8384609402834236799}
   - component: {fileID: 4122581916224319923}
-  - component: {fileID: 7013522217436585503}
-  - component: {fileID: 3416170016435122864}
+  - component: {fileID: 8027032200001839540}
+  - component: {fileID: 4705742856365772256}
   m_Layer: 7
   m_Name: Zombie
   m_TagString: Enemy
@@ -159,20 +159,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 39
   animator: {fileID: 691188349532947889}
---- !u!114 &7013522217436585503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 221861033526913143}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00afb2de0a6008b47b3bfd6a7ec1f446, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  zombie: {fileID: 221861033526913143}
---- !u!54 &3416170016435122864
+  ragdollManager: {fileID: 0}
+  navMeshAgent: {fileID: 0}
+--- !u!54 &8027032200001839540
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -199,6 +188,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4705742856365772256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 221861033526913143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00afb2de0a6008b47b3bfd6a7ec1f446, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zombie: {fileID: 221861033526913143}
 --- !u!1 &601882094113396265
 GameObject:
   m_ObjectHideFlags: 0

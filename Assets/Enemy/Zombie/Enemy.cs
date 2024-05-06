@@ -7,15 +7,18 @@ public class Enemy : PoolAble
 {
     public int HP = 100;
     public Animator animator;
-    RagdollManager ragdollManager;
-    NavMeshAgent navMeshAgent;
+    [HideInInspector] public RagdollManager ragdollManager;
+    [HideInInspector] public NavMeshAgent navMeshAgent;
 
-    private Rigidbody rb;
-
-    private void Start()
+    private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         ragdollManager = GetComponent<RagdollManager>();
+    }
+    private void Start()
+    {
+        navMeshAgent.enabled = true;
+        animator.enabled = true;
     }
     public void TakeDamage(int damageAmount)
     {
@@ -40,7 +43,6 @@ public class Enemy : PoolAble
     private IEnumerator ReleaseZombieAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-
         ReleaseObject();
     }
 
@@ -48,22 +50,9 @@ public class Enemy : PoolAble
     {
         if (ragdollManager != null)
         {
-            // RagdollManager가 존재할 때만 Ragdoll 활성화
             ragdollManager.setRigidbodyState(false);
         }
         navMeshAgent.enabled = false;
         animator.enabled = false;
-    }
-    public void ActiveEnemy()
-    {
-        HP = 100;
-
-        if (ragdollManager != null)
-        {
-            // RagdollManager가 존재할 때만 Ragdoll 활성화
-            ragdollManager.setRigidbodyState(true);
-        }
-        navMeshAgent.enabled = true;
-        animator.enabled = true;
     }
 }

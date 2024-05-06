@@ -115,7 +115,6 @@ public class WeaponManager : MonoBehaviour
 
         bulletScript.dir = barrelPos.transform.forward; // 총알 방향 설정
 
-        rb = bulletGo.GetComponent<Rigidbody>(); // 총알 Rigidbody 컴포넌트 가져오기
         rb.AddForce(barrelPos.forward * bulletVelocity, ForceMode.Impulse); // 총알에 힘을 가해 발사
     }
 }

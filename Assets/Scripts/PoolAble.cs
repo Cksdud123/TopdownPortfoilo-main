@@ -10,6 +10,5 @@ public class PoolAble : MonoBehaviour
     public void ReleaseObject()
     {
         Pool.Release(gameObject);
-        Debug.Log("반환 완료!!");
     }
 }

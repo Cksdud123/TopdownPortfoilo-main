@@ -74,14 +74,15 @@ public class Spawner : MonoBehaviour
     {
         var zombieGo = ObjectPoolingManager.instance.GetGo("Zombie");
 
-        zombieGo.transform.position = transform.position;
-        zombieGo.transform.rotation = Quaternion.identity;
+        Enemy enemyGo = zombieGo.GetComponent<Enemy>();
 
-        Enemy enemyScript = zombieGo.GetComponent<Enemy>();
-        if (enemyScript != null)
-        {
-            enemyScript.ActiveEnemy(); // Enemy √ ±‚»≠
-        }
+        enemyGo.transform.position = transform.position;
+        enemyGo.transform.rotation = Quaternion.identity;
+
+        enemyGo.HP = 39;
+        enemyGo.navMeshAgent.enabled = true;
+        enemyGo.animator.enabled = true;
+        enemyGo.enabled = true;
     }
 
     private void NormalizeSpawnRates()
