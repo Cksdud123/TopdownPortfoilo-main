@@ -36,13 +36,16 @@ public class WeaponManager : MonoBehaviour
     public float shootingRange = 100f;
     public GameObject bloodEffect;
 
-    private Weapon weaponState;
+    public Weapon weaponState;
+
+    private Animator anim;
 
     // Start is called before the first frame update
     private void Awake()
     {
         muzzleFlash = GetComponentInChildren<ParticleSystem>();
         actions = GetComponentInParent<ActionStateManager>();
+        anim = GetComponentInParent<Animator>();
     }
     void Start()
     {
@@ -69,7 +72,10 @@ public class WeaponManager : MonoBehaviour
         }
         else if(weaponState == Weapon.Knife)
         {
-            // Ä® °ø°Ý
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                Attack();
+            }
         }
     }
     bool ShouldFire()
@@ -99,7 +105,10 @@ public class WeaponManager : MonoBehaviour
             Bullet();
         }
     }
-
+    void Attack()
+    {
+        anim.SetTrigger("Attacking");
+    }
     private void TriggerMuzzleFlash()
     {
         muzzleFlash.Play();
