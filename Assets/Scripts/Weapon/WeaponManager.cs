@@ -79,6 +79,7 @@ public class WeaponManager : MonoBehaviour
 
         AmmoUI.instance.UpdateAmmoText(ammo.currentAmmo);
         AmmoUI.instance.UpdateMagText(ammo.extraAmmo);
+        AmmoUI.instance.AmmoBarFilter(ammo.currentAmmo, ammo.clipSize);
 
         TriggerMuzzleFlash(); // ÃÑ±¸ È­¿° È¿°ú ½ÇÇà
         recoil.TriggerRecoil();

@@ -18,6 +18,7 @@ public class WeaponAmmo : MonoBehaviour
         currentAmmo = clipSize; // 시작할 때 현재 탄약을 탄창 크기로 초기화
         AmmoUI.instance.UpdateAmmoText(currentAmmo);
         AmmoUI.instance.UpdateMagText(extraAmmo);
+        AmmoUI.instance.AmmoBarFilter(currentAmmo, clipSize);
     }
 
     // 탄약을 재장전하는 메서드
@@ -46,5 +47,6 @@ public class WeaponAmmo : MonoBehaviour
 
         AmmoUI.instance.UpdateAmmoText(currentAmmo);
         AmmoUI.instance.UpdateMagText(extraAmmo);
+        AmmoUI.instance.AmmoBarFilter(currentAmmo, clipSize);
     }
 }

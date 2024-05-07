@@ -37,6 +37,7 @@ public class WeaponClassManager : MonoBehaviour
         // 현재 무기의 탄약 정보를 UI에 업데이트
         AmmoUI.instance.UpdateAmmoText(weapon.ammo.currentAmmo);
         AmmoUI.instance.UpdateMagText(weapon.ammo.extraAmmo);
+        AmmoUI.instance.AmmoBarFilter(weapon.ammo.currentAmmo, weapon.ammo.clipSize);
 
         IHandIK.data.target = weapon.IHandTarget;
         RHandIK.data.target = weapon. RHandTarget;
