@@ -161,6 +161,8 @@ MonoBehaviour:
   animator: {fileID: 691188349532947889}
   ragdollManager: {fileID: 0}
   navMeshAgent: {fileID: 0}
+  experienceManager: {fileID: 0}
+  attack_Point: {fileID: 8282585615279853822}
 --- !u!54 &8027032200001839540
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1803,6 +1805,7 @@ Transform:
   - {fileID: 7440446847278555556}
   - {fileID: 8081737316088426459}
   - {fileID: 883200753080471702}
+  - {fileID: 2616682595669425801}
   m_Father: {fileID: 7878290480233866070}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3451934744761343762
@@ -3411,6 +3414,55 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!1 &8282585615279853822
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2616682595669425801}
+  - component: {fileID: 5082604017734464220}
+  m_Layer: 7
+  m_Name: AttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &2616682595669425801
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8282585615279853822}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0.1, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 913091499981543732}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5082604017734464220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8282585615279853822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ad5ab488bc47f8458fef3b2b69dcf8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 20
+  radius: 1
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &8379211117781197266
 GameObject:
   m_ObjectHideFlags: 0

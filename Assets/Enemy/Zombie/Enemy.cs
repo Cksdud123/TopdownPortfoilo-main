@@ -11,6 +11,8 @@ public class Enemy : PoolAble
     [HideInInspector] public NavMeshAgent navMeshAgent;
     [HideInInspector] public ExperienceManager experienceManager;
 
+    public GameObject attack_Point;
+
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -57,5 +59,18 @@ public class Enemy : PoolAble
         }
         navMeshAgent.enabled = false;
         animator.enabled = false;
+    }
+
+    void Turn_On_AttackPoint()
+    {
+        attack_Point.SetActive(true);
+    }
+
+    void Turn_Off_AttackPoint()
+    {
+        if (attack_Point.activeInHierarchy)
+        {
+            attack_Point.SetActive(false);
+        }
     }
 }
