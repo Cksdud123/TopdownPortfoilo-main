@@ -8,7 +8,8 @@ public class WeaponClassManager : MonoBehaviour
     [SerializeField] public TwoBoneIKConstraint RHandIK;
     [SerializeField] public TwoBoneIKConstraint IHandIK;
     [SerializeField] public RigBuilder rigBuilder;
-    [SerializeField] public Rig rigs;
+
+    [SerializeField] private List<Rig> rigs = new List<Rig>();
 
     [HideInInspector] public Animator anim;
 
@@ -16,7 +17,12 @@ public class WeaponClassManager : MonoBehaviour
 
     public WeaponManager[] weapons;
     ActionStateManager actions;
+
     int currentWeaponIndex;
+    int currentLayerIndex;
+    int currentRigIndex;
+
+    int startLayerIndex = 2;
     // Start is called before the first frame update
 
     private void Awake()
@@ -28,6 +34,10 @@ public class WeaponClassManager : MonoBehaviour
     {
         //anim.SetLayerWeight(1, 0);
         currentWeaponIndex = 0;
+        currentRigIndex = 0;
+        currentLayerIndex = 1;
+
+        anim.SetLayerWeight(startLayerIndex, 0);
         weapons[currentWeaponIndex].gameObject.SetActive(true);
     }
     public void SetCurrentWeapon(WeaponManager weapon)
@@ -53,18 +63,21 @@ public class WeaponClassManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            StartCoroutine(WeaponSelect(0));
+            StartCoroutine(WeaponSelect(0,1,0));
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            StartCoroutine(WeaponSelect(1));
+            StartCoroutine(WeaponSelect(1, 1, 0));
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            StartCoroutine(WeaponSelect(2, 2, 1));
         }
     }
 
-    IEnumerator WeaponSelect(int weaponIndex)
+    IEnumerator WeaponSelect(int weaponIndex,int LayerWeight,int rigWeight)
     {
-        rigs.weight = 1;
-        anim.SetLayerWeight(1, 1);
+        LayerSelect(weaponIndex, LayerWeight, rigWeight);
 
         if (currentWeaponIndex == weaponIndex) yield break;
 
@@ -79,6 +92,21 @@ public class WeaponClassManager : MonoBehaviour
 
         // 입력으로 들어온 무기를 현재 무기로 변경한다.
         currentWeaponIndex = weaponIndex;
+    }
+    public void LayerSelect(int weaponSelect, int LayerSelect, int rigWeight)
+    {
+        rigs[currentRigIndex].weight = 0;
+
+        rigs[rigWeight].weight = 1;
+
+        currentRigIndex = rigWeight;
+
+        // 현재 가중치를 비활성화 한다
+        anim.SetLayerWeight(currentLayerIndex, 0);
+        // 입력으로 들어온 가중치를 활성화 한다
+        anim.SetLayerWeight(LayerSelect, 1);
+        // 입력으로 들어온 가중치를 현재 가중치로 설정한다.
+        currentLayerIndex = LayerSelect;
     }
     IEnumerator WeaponPutAway()
     {

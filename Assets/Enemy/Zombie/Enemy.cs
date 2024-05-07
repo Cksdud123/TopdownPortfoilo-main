@@ -24,9 +24,9 @@ public class Enemy : PoolAble
         navMeshAgent.enabled = true;
         animator.enabled = true;
     }
-    public void TakeDamage(int damageAmount)
+    public void TakeDamage(float damageAmount)
     {
-        HP -= damageAmount;
+        HP -= (int) damageAmount;
         Debug.Log("총알 맞음!! 현재 체력" + HP);
         if (HP <= 0)
         {

@@ -4,7 +4,11 @@ using UnityEngine.Animations.Rigging;
 using UnityEngine;
 using UnityEngine.Pool;
 
-
+public enum Weapon
+{
+    Rifle,
+    Knife
+}
 public class WeaponManager : MonoBehaviour
 {
     [Header("Fire Rate")]
@@ -14,7 +18,7 @@ public class WeaponManager : MonoBehaviour
 
     [Header("Bullet Properties")]
     [SerializeField] Transform barrelPos; // ÃÑ±¸ À§Ä¡
-    [SerializeField] float bulletVelocity; // ÃÑ¾Ë ¹ß»ç ¼Óµµ
+    //[SerializeField] float bulletVelocity; // ÃÑ¾Ë ¹ß»ç ¼Óµµ
     [SerializeField] int bulletsPerShot; // ¹ß»çÇÒ ÃÑ¾Ë °³¼ö
     public float damage = 20; // ÃÑ¾Ë µ¥¹ÌÁö
 
@@ -31,6 +35,8 @@ public class WeaponManager : MonoBehaviour
 
     public float shootingRange = 100f;
     public GameObject bloodEffect;
+
+    private Weapon weaponState;
 
     // Start is called before the first frame update
     private void Awake()
@@ -57,9 +63,13 @@ public class WeaponManager : MonoBehaviour
     void Update()
     {
 
-        if (ShouldFire())
+        if (weaponState == Weapon.Rifle)
         {
-            Fire();
+            if (ShouldFire()) Fire();
+        }
+        else if(weaponState == Weapon.Knife)
+        {
+            // Ä® °ø°Ý
         }
     }
     bool ShouldFire()
@@ -104,7 +114,7 @@ public class WeaponManager : MonoBehaviour
 
             if (enemy != null)
             {
-                enemy.TakeDamage(20);
+                enemy.TakeDamage(damage);
 
                 var bloodEffectGo = ObjectPoolingManager.instance.GetGo("BloodEffect");
                 bloodEffectGo.transform.position = hitInfo.point;

@@ -10,21 +10,16 @@ public class AmmoUI : MonoBehaviour
     public Text currentAmmoText;
     public Text extraAmmoText;
 
-    private WeaponAmmo weaponAmmo;
-
-    float lerpSpeed;
-
     public static AmmoUI instance;
 
     private void Awake()
     {
         instance = this;
-        lerpSpeed = 3f;
     }
 
     public void AmmoBarFilter(int currentAmmo,int clipsize)
     {
-        ringAmmoBar.fillAmount = Mathf.Lerp(ringAmmoBar.fillAmount, (float)currentAmmo / clipsize, lerpSpeed);
+        ringAmmoBar.fillAmount = Mathf.Lerp(ringAmmoBar.fillAmount, (float)currentAmmo / clipsize, 1);
     }
     public void UpdateAmmoText(int currentAmmo)
     {
