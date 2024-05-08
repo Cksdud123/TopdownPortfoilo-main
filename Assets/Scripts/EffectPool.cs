@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EffectPool : PoolAble
 {
-    public static EffectPool instance;
+    //public static EffectPool instance;
 
     private void Start()
     {

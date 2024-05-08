@@ -30,6 +30,8 @@ public class ActionStateManager : MonoBehaviour
     [HideInInspector] public float currentFov;
     public float fovSmoothSpeed = 10f;
 
+    public Transform Aimposition;
+
     public TwoBoneIKConstraint IHandIK;
     public TwoBoneIKConstraint RHandIK;
 
@@ -102,6 +104,17 @@ public class ActionStateManager : MonoBehaviour
         else
         {
             return (success: false, position: Vector3.zero);
+        }
+    }
+    private void OnDrawGizmos()
+    {
+        var (success, position) = GetMousePosition();
+        if (success)
+        {
+            var direction = position - transform.position;
+            direction.y = 0;
+            Gizmos.color = Color.red;
+            Gizmos.DrawLine(transform.position, transform.position + direction);
         }
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AimingState : ActionBaseState
 {
+    public float maxYPosition = 2f;
     public override void EnterState(ActionStateManager actions)
     {
         actions.anim.SetBool("Aiming", true);

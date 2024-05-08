@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1678015347720571225
 Transform:
   m_ObjectHideFlags: 0
@@ -53,7 +53,7 @@ MonoBehaviour:
   fireRate: 0.12
   semiAuto: 0
   barrelPos: {fileID: 2263982725645496401}
-  bulletVelocity: 100
+  bulletVelocity: 500
   bulletsPerShot: 1
   damage: 20
   ammo: {fileID: 7812106294556357277}
@@ -61,6 +61,7 @@ MonoBehaviour:
   RHandTarget: {fileID: 6531734362435047336}
   shootingRange: 200
   bloodEffect: {fileID: 3198374318725026878, guid: bc9d167aef921d645803f44356c0031d, type: 3}
+  weaponState: 0
 --- !u!114 &7812106294556357277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,7 +74,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40b067936d3c5ef4c99a390dfec1cc1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clipSize: 1000
+  clipSize: 30
   extraAmmo: 60
   currentAmmo: 0
 --- !u!114 &7929673662494133197

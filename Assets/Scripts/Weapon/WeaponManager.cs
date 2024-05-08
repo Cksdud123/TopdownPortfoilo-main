@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.Animations.Rigging;
 using UnityEngine;
 using UnityEngine.Pool;
+using TMPro;
 
 public enum Weapon
 {
@@ -18,7 +19,7 @@ public class WeaponManager : MonoBehaviour
 
     [Header("Bullet Properties")]
     [SerializeField] Transform barrelPos; // 총구 위치
-    //[SerializeField] float bulletVelocity; // 총알 발사 속도
+    [SerializeField] float bulletVelocity; // 총알 발사 속도
     [SerializeField] int bulletsPerShot; // 발사할 총알 개수
     public float damage = 20; // 총알 데미지
 
@@ -119,6 +120,7 @@ public class WeaponManager : MonoBehaviour
 
         if (Physics.Raycast(barrelPos.transform.position, barrelPos.transform.forward, out hitInfo, shootingRange))
         {
+            hitBullet();
             Enemy enemy = hitInfo.transform.GetComponentInParent<Enemy>();
 
             if (enemy != null)
@@ -130,5 +132,21 @@ public class WeaponManager : MonoBehaviour
                 bloodEffectGo.transform.rotation = Quaternion.LookRotation(hitInfo.normal);
             }
         }
+    }
+    public void hitBullet()
+    {
+        var bulletGo = ObjectPoolingManager.instance.GetGo("Bullet");
+
+        bulletGo.transform.position = barrelPos.transform.position; // 총알의 위치를 총구의 위치로 설정
+        bulletGo.transform.rotation = barrelPos.transform.rotation; // 총알의 회전을 총구의 회전으로 설정
+
+        TrailRenderer trailRenderer = bulletGo.GetComponent<TrailRenderer>();
+
+        // 총알의 Rigidbody 초기화
+        Rigidbody rb = bulletGo.GetComponent<Rigidbody>();
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+        rb.AddForce(barrelPos.transform.forward * bulletVelocity, ForceMode.Impulse); // 총알에 힘을 가해 발사
+        trailRenderer.Clear();
     }
 }
