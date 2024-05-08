@@ -8,7 +8,7 @@ public class EffectPool : PoolAble
 
     private void Start()
     {
-        Invoke("DestroyEffect", 1f);
+        Invoke("DestroyEffect", 3f);
     }
     public void DestroyEffect()
     {

@@ -35,7 +35,6 @@ public class WeaponManager : MonoBehaviour
     public Transform RHandTarget;
 
     public float shootingRange = 100f;
-    public GameObject bloodEffect;
 
     public Weapon weaponState;
 
