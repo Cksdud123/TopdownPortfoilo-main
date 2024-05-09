@@ -38,6 +38,7 @@ public class WeaponClassManager : MonoBehaviour
         currentLayerIndex = 1;
 
         anim.SetLayerWeight(startLayerIndex, 0);
+        anim.SetLayerWeight(3, 0);
         weapons[currentWeaponIndex].gameObject.SetActive(true);
     }
     public void SetCurrentWeapon(WeaponManager weapon)
@@ -72,6 +73,10 @@ public class WeaponClassManager : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             StartCoroutine(WeaponSelect(2, 2, 1));
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            StartCoroutine(WeaponSelect(3, 3, 2));
         }
     }
 

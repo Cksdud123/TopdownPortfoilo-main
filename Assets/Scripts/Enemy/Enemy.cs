@@ -25,8 +25,8 @@ public class Enemy : PoolAble
     public void TakeDamage(float damageAmount)
     {
         HP -= damageAmount;
-        Vector3 randomness = new Vector3(Random.Range(0f, 0.25f), Random.Range(0f, 2.5f), Random.Range(0f, 0.25f));
-        DamagePopUpGenerator.current.CreatePopUp(transform.position + randomness, damageAmount.ToString(), Color.yellow);
+        Vector3 randomness = new Vector3(Random.Range(0f, 0.25f), Random.Range(0f, 1.5f), Random.Range(0f, 0.25f));
+        DamagePopUpGenerator.current.CreatePopUp(transform.position + randomness, damageAmount.ToString(), Color.red);
 
         Debug.Log("총알 맞음!! 현재 체력" + HP);
         if (HP <= 0)
