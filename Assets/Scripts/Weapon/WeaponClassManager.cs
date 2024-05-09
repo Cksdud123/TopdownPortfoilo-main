@@ -18,11 +18,9 @@ public class WeaponClassManager : MonoBehaviour
     public WeaponManager[] weapons;
     ActionStateManager actions;
 
-    int currentWeaponIndex;
+    [HideInInspector] public int currentWeaponIndex;
     int currentLayerIndex;
     int currentRigIndex;
-
-    int startLayerIndex = 2;
     // Start is called before the first frame update
 
     private void Awake()
@@ -37,7 +35,7 @@ public class WeaponClassManager : MonoBehaviour
         currentRigIndex = 0;
         currentLayerIndex = 1;
 
-        anim.SetLayerWeight(startLayerIndex, 0);
+        anim.SetLayerWeight(2, 0);
         anim.SetLayerWeight(3, 0);
         weapons[currentWeaponIndex].gameObject.SetActive(true);
     }
@@ -48,7 +46,7 @@ public class WeaponClassManager : MonoBehaviour
         // 현재 무기의 탄약 정보를 UI에 업데이트
         AmmoUI.instance.UpdateAmmoText(weapon.ammo.currentAmmo);
         AmmoUI.instance.UpdateMagText(weapon.ammo.extraAmmo);
-        AmmoUI.instance.AmmoBarFilter(weapon.ammo.currentAmmo, weapon.ammo.clipSize);
+        //AmmoUI.instance.AmmoBarFilter(weapon.ammo.currentAmmo, weapon.ammo.clipSize);
 
         IHandIK.data.target = weapon.IHandTarget;
         RHandIK.data.target = weapon. RHandTarget;
@@ -83,6 +81,8 @@ public class WeaponClassManager : MonoBehaviour
     IEnumerator WeaponSelect(int weaponIndex,int LayerWeight,int rigWeight)
     {
         LayerSelect(weaponIndex, LayerWeight, rigWeight);
+
+        AmmoUI.instance.ChangeICon(weaponIndex);
 
         if (currentWeaponIndex == weaponIndex) yield break;
 

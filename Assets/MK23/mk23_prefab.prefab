@@ -339,15 +339,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7769406ff57055e43b398fadb7c8f91b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 1
+  fireRate: 0.2
   semiAuto: 0
   barrelPos: {fileID: 7322723899804948252}
   bulletVelocity: 100
   bulletsPerShot: 1
   damage: 20
   ammo: {fileID: 8453753564662819154}
-  IHandTarget: {fileID: 0}
-  RHandTarget: {fileID: 0}
+  IHandTarget: {fileID: 1586453993130505828}
+  RHandTarget: {fileID: 8814303275435819800}
   shootingRange: 100
   weaponState: 0
 --- !u!114 &8453753564662819154
@@ -362,8 +362,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40b067936d3c5ef4c99a390dfec1cc1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clipSize: 42
-  extraAmmo: 0
+  clipSize: 7
+  extraAmmo: 35
   currentAmmo: 0
 --- !u!114 &5918815301366514837
 MonoBehaviour:

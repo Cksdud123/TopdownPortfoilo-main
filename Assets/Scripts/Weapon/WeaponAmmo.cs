@@ -8,17 +8,23 @@ public class WeaponAmmo : MonoBehaviour
     public int extraAmmo; // 추가 탄약
     [HideInInspector] public int currentAmmo; // 현재 탄약 수
 
+    [HideInInspector] public WeaponClassManager weaponClass;
+
     //public AudioClip magInSound; // 탄창 장전 사운드
     //public AudioClip magOutSound; // 탄창 탈착 사운드
     //public AudioClip releaseSlideSound; // 슬라이드 해제 사운드
 
     // Start is called before the first frame update
+    private void Awake()
+    {
+        weaponClass = GetComponentInParent<WeaponClassManager>();
+    }
     void Start()
     {
         currentAmmo = clipSize; // 시작할 때 현재 탄약을 탄창 크기로 초기화
         AmmoUI.instance.UpdateAmmoText(currentAmmo);
         AmmoUI.instance.UpdateMagText(extraAmmo);
-        AmmoUI.instance.AmmoBarFilter(currentAmmo, clipSize);
+        //AmmoUI.instance.AmmoBarFilter(currentAmmo, clipSize);
     }
 
     // 탄약을 재장전하는 메서드
@@ -47,6 +53,6 @@ public class WeaponAmmo : MonoBehaviour
 
         AmmoUI.instance.UpdateAmmoText(currentAmmo);
         AmmoUI.instance.UpdateMagText(extraAmmo);
-        AmmoUI.instance.AmmoBarFilter(currentAmmo, clipSize);
+        //AmmoUI.instance.AmmoBarFilter(currentAmmo, clipSize);
     }
 }

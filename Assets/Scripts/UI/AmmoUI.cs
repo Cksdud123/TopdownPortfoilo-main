@@ -1,25 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
 
 public class AmmoUI : MonoBehaviour
 {
-    public Image ringAmmoBar;
+    //public Image AmmoBar;
+    public Image[] ICon;
 
-    public Text currentAmmoText;
-    public Text extraAmmoText;
+    public TextMeshProUGUI currentAmmoText;
+    public TextMeshProUGUI extraAmmoText;
 
     public static AmmoUI instance;
+
+    private int IconCount;
+    private int currentIConIndex;
 
     private void Awake()
     {
         instance = this;
     }
-
-    public void AmmoBarFilter(int currentAmmo,int clipsize)
+    private void Start()
     {
-        ringAmmoBar.fillAmount = Mathf.Lerp(ringAmmoBar.fillAmount, (float)currentAmmo / clipsize, 1);
+        ICon[currentIConIndex].gameObject.SetActive(true);
+    }
+    public void ChangeICon(int IconCount)
+    {
+        ICon[currentIConIndex].gameObject.SetActive(false);
+
+        ICon[IconCount].gameObject.SetActive(true);
+
+        currentIConIndex = IconCount;
     }
     public void UpdateAmmoText(int currentAmmo)
     {
@@ -29,4 +41,9 @@ public class AmmoUI : MonoBehaviour
     {
         extraAmmoText.text = "" + extraAmmo;
     }
+
+    /*public void AmmoBarFilter(int currentAmmo, int clipsize)
+    {
+        AmmoBar.fillAmount = Mathf.Lerp(AmmoBar.fillAmount, (float)currentAmmo / clipsize, 1);
+    }*/
 }

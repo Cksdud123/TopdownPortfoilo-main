@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class AttackToPlayer : MonoBehaviour
@@ -16,6 +17,10 @@ public class AttackToPlayer : MonoBehaviour
         {
 
             hits[0].gameObject.GetComponentInParent<Enemy>().TakeDamage(damage);
+
+            var bloodEffectGo = ObjectPoolingManager.instance.GetGo("BloodEffect");
+            bloodEffectGo.transform.position = hits[0].transform.position;
+            bloodEffectGo.transform.rotation = Quaternion.identity;
 
             gameObject.SetActive(false);
 
