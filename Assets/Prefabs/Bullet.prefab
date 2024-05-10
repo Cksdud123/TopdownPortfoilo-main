@@ -102,7 +102,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -187,7 +187,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.22727203
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -197,11 +197,11 @@ TrailRenderer:
       - serializedVersion: 3
         time: 0.517374
         value: 0.11156992
-        inSlope: -0.37945148
-        outSlope: -0.37945148
+        inSlope: -0.9756666
+        outSlope: -0.9756666
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.41044712
+        inWeight: 0.3221645
         outWeight: 0
       - serializedVersion: 3
         time: 1

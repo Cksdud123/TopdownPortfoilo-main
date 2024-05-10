@@ -63,10 +63,9 @@ public class ActionStateManager : MonoBehaviour
         currentState = state;
         currentState.EnterState(this);
     }
-    IEnumerator WeaponReloaded()
+    public void WeaponReloaded()
     {
         ammo.Reload();
-        yield return null;
         IHandIK.weight = 1;
         RHandIK.weight = 1;
         SwitchState(Default);

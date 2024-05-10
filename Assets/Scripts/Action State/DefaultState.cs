@@ -14,6 +14,9 @@ public class DefaultState : ActionBaseState
 
     public override void UpdateState(ActionStateManager actions)
     {
+        actions.IHandIK.weight = Mathf.Lerp(actions.IHandIK.weight, 1, 10 * Time.deltaTime);
+        actions.RHandIK.weight = Mathf.Lerp(actions.RHandIK.weight, 1, 10 * Time.deltaTime);
+
         if (Input.GetKey(KeyCode.Mouse1)) actions.SwitchState(actions.AimState);
 
         if (Input.GetKeyDown(KeyCode.R))

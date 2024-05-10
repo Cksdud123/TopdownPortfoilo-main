@@ -98009,15 +98009,15 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 2.1
-    functionName: ReleaseSlide
+  - time: 2.1333334
+    functionName: WeaponReloaded
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 2.7333333
-    functionName: WeaponReloaded
+  - time: 2.2
+    functionName: ReleaseSlide
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

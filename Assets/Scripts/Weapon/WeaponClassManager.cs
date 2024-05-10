@@ -85,9 +85,16 @@ public class WeaponClassManager : MonoBehaviour
 
         anim.SetTrigger("Swap");
 
-        yield return new WaitForSeconds(1f);
+        rigs[currentRigIndex].weight = 0;
+
+        rigBuilder.layers[currentRigIndex].active = false;
+
+        yield return new WaitForSeconds(1.08f);
+
         // 현재 무기를 비활성화 한다
         weapons[currentWeaponIndex].gameObject.SetActive(false);
+
+        LayerSelect(weaponIndex, LayerWeight, rigWeight);
 
         // 입력으로 들어온 무기를 활성화 한다.
         weapons[weaponIndex].gameObject.SetActive(true);
@@ -95,20 +102,26 @@ public class WeaponClassManager : MonoBehaviour
         // 입력으로 들어온 무기를 현재 무기로 변경한다.
         currentWeaponIndex = weaponIndex;
 
-        LayerSelect(weaponIndex, LayerWeight, rigWeight);
-    }
-    public void LayerSelect(int weaponSelect, int LayerSelect, int rigWeight)
-    {
-        rigs[currentRigIndex].weight = 0;
-
-        rigBuilder.layers[currentRigIndex].active = false;
+        yield return new WaitForSeconds(0.1f);
 
         rigBuilder.layers[rigWeight].active = true;
 
-        rigs[rigWeight].weight = 1;
+        float duration = 0.9f;
+
+        float elapsedTime = 0f;
+        while (elapsedTime < duration)
+        {
+            float t = elapsedTime / duration;
+            rigs[rigWeight].weight = Mathf.Lerp(0, 1, t);
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
 
         currentRigIndex = rigWeight;
-
+    }
+    public void LayerSelect(int weaponSelect, int LayerSelect, int rigWeight)
+    {
         // 현재 가중치를 비활성화 한다
         anim.SetLayerWeight(currentLayerIndex, 0);
         // 입력으로 들어온 가중치를 활성화 한다
