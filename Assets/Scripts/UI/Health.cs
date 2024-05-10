@@ -3,7 +3,7 @@ using UnityEngine.UI;
 public class Health : MonoBehaviour
 {
     public Image ringHealthBar;
-    float health, maxHealth = 100;
+    [HideInInspector] public float health, maxHealth = 100;
     float lerpSpeed;
 
     private void Start()
