@@ -7,12 +7,17 @@ public class ZombieChaseState : StateMachineBehaviour
 {
     NavMeshAgent agent;
     Transform player;
+    EnemySoundManager enemySound;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         agent = animator.GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         agent.speed = 1f;
+
+        enemySound = animator.GetComponent<EnemySoundManager>();
+
+        enemySound.Play_ChaseSound();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

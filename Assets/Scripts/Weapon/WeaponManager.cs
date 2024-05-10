@@ -9,6 +9,7 @@ using UnityEditor.PackageManager;
 public enum Weapon
 {
     Rifle,
+    Pistol,
     Knife
 }
 public class WeaponManager : MonoBehaviour
@@ -31,6 +32,10 @@ public class WeaponManager : MonoBehaviour
     private ActionStateManager actions;
     WeaponClassManager weaponClass;
     WeaponRecoil recoil;
+
+    [SerializeField] AudioClip gunShot;
+    [SerializeField] AudioClip pistolShot;
+    [HideInInspector] public AudioSource audioSource;
 
     public Transform IHandTarget;
     public Transform RHandTarget;
@@ -58,6 +63,7 @@ public class WeaponManager : MonoBehaviour
         {
             weaponClass = GetComponentInParent<WeaponClassManager>();
             ammo = GetComponent<WeaponAmmo>();
+            audioSource = GetComponent<AudioSource>();
             recoil = GetComponent<WeaponRecoil>();
             recoil.recoilFollowPos = weaponClass.recoilFollowPos;
         }
@@ -66,11 +72,7 @@ public class WeaponManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (weaponState == Weapon.Rifle)
-        {
-            if (ShouldFire()) Fire();
-        }
+        if (ShouldFire()) Fire();
         else if(weaponState == Weapon.Knife)
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -98,7 +100,12 @@ public class WeaponManager : MonoBehaviour
         AmmoUI.instance.UpdateMagText(ammo.extraAmmo);
         //AmmoUI.instance.AmmoBarFilter(ammo.currentAmmo, ammo.clipSize);
 
-        TriggerMuzzleFlash(); // 총구 화염 효과 실행
+        if(weaponState == Weapon.Rifle)
+            audioSource.PlayOneShot(gunShot);
+        else if(weaponState == Weapon.Pistol)
+            audioSource.PlayOneShot(pistolShot);
+
+        TriggerMuzzleFlash();
         recoil.TriggerRecoil();
 
         for (int i = 0; i < bulletsPerShot; i++) // 발사할 총알 개수만큼 반복
@@ -126,6 +133,9 @@ public class WeaponManager : MonoBehaviour
             if (enemy != null)
             {
                 enemy.TakeDamage(damage);
+
+                EnemySoundManager enemySound = enemy.GetComponent<EnemySoundManager>();
+                enemySound.Play_getHitSound();
 
                 var bloodEffectGo = ObjectPoolingManager.instance.GetGo("BloodEffect");
                 bloodEffectGo.transform.position = hitInfo.point;

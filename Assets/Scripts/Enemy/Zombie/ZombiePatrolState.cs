@@ -11,11 +11,14 @@ public class ZombiePatrolState : StateMachineBehaviour
     NavMeshAgent agent;
 
     Transform player;
+
+    EnemySoundManager enemySound;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = animator.GetComponent<NavMeshAgent>();
+        enemySound = animator.GetComponent<EnemySoundManager>();
         agent.speed = 0.5f;
         timer = 0;
 
@@ -25,6 +28,7 @@ public class ZombiePatrolState : StateMachineBehaviour
             wayPoints.Add(t);
         }
 
+        enemySound.Play_PatrolSound();
         agent.SetDestination(wayPoints[Random.Range(0, wayPoints.Count)].position);
     }
 

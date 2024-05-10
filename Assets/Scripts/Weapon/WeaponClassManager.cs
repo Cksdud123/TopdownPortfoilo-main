@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -38,6 +39,7 @@ public class WeaponClassManager : MonoBehaviour
         anim.SetLayerWeight(2, 0);
         anim.SetLayerWeight(3, 0);
         weapons[currentWeaponIndex].gameObject.SetActive(true);
+        rigBuilder.layers[currentRigIndex].active = true;
     }
     public void SetCurrentWeapon(WeaponManager weapon)
     {
@@ -52,6 +54,7 @@ public class WeaponClassManager : MonoBehaviour
         RHandIK.data.target = weapon. RHandTarget;
 
         rigBuilder.Build();
+
         actions.SetWeapon(weapon);
     }
     private void Update()
@@ -66,22 +69,16 @@ public class WeaponClassManager : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            StartCoroutine(WeaponSelect(1, 1, 0));
+            StartCoroutine(WeaponSelect(1, 2, 1));
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            StartCoroutine(WeaponSelect(2, 2, 1));
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            StartCoroutine(WeaponSelect(3, 3, 2));
+            StartCoroutine(WeaponSelect(2, 3, 2));
         }
     }
 
     IEnumerator WeaponSelect(int weaponIndex,int LayerWeight,int rigWeight)
     {
-        LayerSelect(weaponIndex, LayerWeight, rigWeight);
-
         AmmoUI.instance.ChangeICon(weaponIndex);
 
         if (currentWeaponIndex == weaponIndex) yield break;
@@ -97,10 +94,16 @@ public class WeaponClassManager : MonoBehaviour
 
         // 입력으로 들어온 무기를 현재 무기로 변경한다.
         currentWeaponIndex = weaponIndex;
+
+        LayerSelect(weaponIndex, LayerWeight, rigWeight);
     }
     public void LayerSelect(int weaponSelect, int LayerSelect, int rigWeight)
     {
         rigs[currentRigIndex].weight = 0;
+
+        rigBuilder.layers[currentRigIndex].active = false;
+
+        rigBuilder.layers[rigWeight].active = true;
 
         rigs[rigWeight].weight = 1;
 

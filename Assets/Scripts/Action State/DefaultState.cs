@@ -18,6 +18,7 @@ public class DefaultState : ActionBaseState
 
         if (Input.GetKeyDown(KeyCode.R))
         {
+            Debug.Log("¿Á¿Â¿¸");
             actions.previousState = this;
             actions.SwitchState(actions.Reload);
         }

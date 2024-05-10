@@ -10,9 +10,9 @@ public class WeaponAmmo : MonoBehaviour
 
     [HideInInspector] public WeaponClassManager weaponClass;
 
-    //public AudioClip magInSound; // 탄창 장전 사운드
-    //public AudioClip magOutSound; // 탄창 탈착 사운드
-    //public AudioClip releaseSlideSound; // 슬라이드 해제 사운드
+    public AudioClip magInSound; // 탄창 장전 사운드
+    public AudioClip magOutSound; // 탄창 탈착 사운드
+    public AudioClip releaseSlideSound; // 슬라이드 해제 사운드
 
     // Start is called before the first frame update
     private void Awake()

@@ -35,6 +35,8 @@ public class ActionStateManager : MonoBehaviour
     public TwoBoneIKConstraint IHandIK;
     public TwoBoneIKConstraint RHandIK;
 
+    AudioSource audioSource;
+
     void Awake()
     {
         anim = GetComponent<Animator>();
@@ -72,6 +74,7 @@ public class ActionStateManager : MonoBehaviour
     public void SetWeapon(WeaponManager weapon)
     {
         currentWeapon = weapon;
+        audioSource = weapon.audioSource;
         ammo = weapon.ammo;
     }
 
@@ -105,5 +108,20 @@ public class ActionStateManager : MonoBehaviour
         {
             return (success: false, position: Vector3.zero);
         }
+    }
+
+    public void MagOut()
+    {
+        audioSource.PlayOneShot(ammo.magOutSound);
+    }
+
+    public void MagIn()
+    {
+        audioSource.PlayOneShot(ammo.magInSound);
+    }
+
+    public void ReleaseSlide()
+    {
+        audioSource.PlayOneShot(ammo.releaseSlideSound);
     }
 }
