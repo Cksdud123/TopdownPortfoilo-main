@@ -128,17 +128,4 @@ public class WeaponClassManager : MonoBehaviour
         // 입력으로 들어온 가중치를 현재 가중치로 설정한다.
         currentLayerIndex = LayerSelect;
     }
-    IEnumerator WeaponPutAway()
-    {
-        yield return null;
-        IHandIK.weight = 0;
-        RHandIK.weight = 0;
-    }
-    IEnumerator WeaponPulledOut()
-    {
-        yield return null;
-        IHandIK.weight = 1;
-        RHandIK.weight = 1;
-        actions.SwitchState(actions.Default);
-    }
 }
