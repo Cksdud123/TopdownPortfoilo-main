@@ -5,12 +5,14 @@ using UnityEngine;
 public class RagdollManager : MonoBehaviour
 {
     public GameObject zombie;
+    public Collider ParentCollider;
 
     // Start is called before the first frame update
     private void Start()
     {
         setRigidbodyState(true);
-        setColliderState(true);
+        setColliderState(false);
+        ParentCollider.enabled = true;
     }
     public void setRigidbodyState(bool state)
     {

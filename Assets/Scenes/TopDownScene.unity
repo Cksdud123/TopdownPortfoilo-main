@@ -2064,7 +2064,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1223846237
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2168,7 +2168,7 @@ MonoBehaviour:
     SpawnChance: 0.5
   - Enemy: {fileID: 3847906115106712942, guid: 93d54d30aae460248bdf4fe99bb6110e, type: 3}
     SpawnChance: 0.5
-  _timeBetweenSpawns: 10
+  _timeBetweenSpawns: 5
 --- !u!1 &1232356408
 GameObject:
   m_ObjectHideFlags: 0
@@ -3344,7 +3344,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_RigLayers:
   - m_Rig: {fileID: 350424989}
-    m_Active: 0
+    m_Active: 1
   - m_Rig: {fileID: 461355694}
     m_Active: 0
   - m_Rig: {fileID: 1403963846}

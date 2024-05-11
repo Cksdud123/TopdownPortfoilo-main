@@ -61,6 +61,8 @@ public class Enemy : PoolAble
         if (ragdollManager != null)
         {
             ragdollManager.setRigidbodyState(false);
+            ragdollManager.setColliderState(true);
+            ragdollManager.ParentCollider.enabled = false;
         }
         navMeshAgent.enabled = false;
         animator.enabled = false;

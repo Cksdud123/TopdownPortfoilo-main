@@ -82,6 +82,7 @@ GameObject:
   - component: {fileID: 1732054839348771494}
   - component: {fileID: 2350624503988242814}
   - component: {fileID: 1271946189707334098}
+  - component: {fileID: 2746070064730005541}
   m_Layer: 7
   m_Name: Zombie
   m_TagString: Enemy
@@ -207,6 +208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zombie: {fileID: 221861033526913143}
+  ParentCollider: {fileID: 2746070064730005541}
 --- !u!114 &445461588946001724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -351,6 +353,29 @@ MonoBehaviour:
   - Item: {fileID: 934496460849322569, guid: 27d4ae5d5fc44234196d6504dd9eac32, type: 3}
     DropRate: 0.3
   _notDropProbability: 0.5
+--- !u!136 &2746070064730005541
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 221861033526913143}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.25
+  m_Height: 1.8
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &601882094113396265
 GameObject:
   m_ObjectHideFlags: 0

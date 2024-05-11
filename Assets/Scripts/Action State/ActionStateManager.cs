@@ -66,8 +66,6 @@ public class ActionStateManager : MonoBehaviour
     public void WeaponReloaded()
     {
         ammo.Reload();
-        IHandIK.weight = 1;
-        RHandIK.weight = 1;
         SwitchState(Default);
     }
     public void SetWeapon(WeaponManager weapon)

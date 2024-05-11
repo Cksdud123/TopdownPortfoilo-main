@@ -39,7 +39,6 @@ public class WeaponClassManager : MonoBehaviour
         anim.SetLayerWeight(2, 0);
         anim.SetLayerWeight(3, 0);
         weapons[currentWeaponIndex].gameObject.SetActive(true);
-        rigBuilder.layers[currentRigIndex].active = true;
     }
     public void SetCurrentWeapon(WeaponManager weapon)
     {
