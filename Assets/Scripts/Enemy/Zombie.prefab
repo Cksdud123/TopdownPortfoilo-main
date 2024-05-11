@@ -81,6 +81,7 @@ GameObject:
   - component: {fileID: 445461588946001724}
   - component: {fileID: 1732054839348771494}
   - component: {fileID: 2350624503988242814}
+  - component: {fileID: 1271946189707334098}
   m_Layer: 7
   m_Name: Zombie
   m_TagString: Enemy
@@ -165,6 +166,7 @@ MonoBehaviour:
   ragdollManager: {fileID: 0}
   navMeshAgent: {fileID: 0}
   experienceManager: {fileID: 0}
+  dropItem: {fileID: 1271946189707334098}
 --- !u!54 &8027032200001839540
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -331,6 +333,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1271946189707334098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 221861033526913143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22e7e442e4abfcd44852524d9e7a3e9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ItemDropData:
+  - Item: {fileID: 6486497520093452813, guid: cbe53345bead35647a9f4f21d282ff41, type: 3}
+    DropRate: 0.2
+  - Item: {fileID: 934496460849322569, guid: 27d4ae5d5fc44234196d6504dd9eac32, type: 3}
+    DropRate: 0.3
+  _notDropProbability: 0.5
 --- !u!1 &601882094113396265
 GameObject:
   m_ObjectHideFlags: 0

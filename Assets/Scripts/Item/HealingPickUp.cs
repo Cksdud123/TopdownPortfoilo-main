@@ -2,10 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealingPickUp : MonoBehaviour
+public class HealingPickUp : PoolAble
 {
     public float RotationSpeed = 50.0f;
     // Update is called once per frame
+    private void Start()
+    {
+        Invoke("DestroyHealing", Random.Range(5.0f, 15.0f));
+    }
+    public void DestroyHealing()
+    {
+        ReleaseObject();
+    }
+
     void Update()
     {
         transform.Rotate(Vector3.up * (RotationSpeed * Time.deltaTime));
@@ -18,9 +27,17 @@ public class HealingPickUp : MonoBehaviour
         }
 
         Health playerHealth = other.GetComponent<Health>();
-        playerHealth.health += Random.Range(1.0f, 20.0f);
 
-        gameObject.SetActive(false);
+        if (playerHealth.health == playerHealth.maxHealth)
+        {
+            return;
+        }
+        else
+        {
+            playerHealth.health += Random.Range(1.0f, 20.0f);
+
+            gameObject.SetActive(false);
+        }
         // ¶Ç´Â Destroy(gameObject);
     }
 }

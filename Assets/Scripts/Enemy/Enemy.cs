@@ -11,6 +11,7 @@ public class Enemy : PoolAble
     [HideInInspector] public NavMeshAgent navMeshAgent;
     [HideInInspector] public ExperienceManager experienceManager;
 
+    public DropItem dropItem;
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -28,7 +29,6 @@ public class Enemy : PoolAble
         Vector3 randomness = new Vector3(Random.Range(0f, 0.25f), Random.Range(0f, 1.5f), Random.Range(0f, 0.25f));
         DamagePopUpGenerator.current.CreatePopUp(transform.position + randomness, damageAmount.ToString(), Color.red);
 
-        Debug.Log("총알 맞음!! 현재 체력" + HP);
         if (HP <= 0)
         {
             Die();
@@ -41,9 +41,13 @@ public class Enemy : PoolAble
 
     private void Die()
     {
-        experienceManager.AddExperience(5);
-        DeactiveEnemy();
-        StartCoroutine(ReleaseZombieAfterDelay(5f));
+        if (HP <= 0)
+        {
+            dropItem.Item();
+            experienceManager.AddExperience(5);
+            DeactiveEnemy();
+            StartCoroutine(ReleaseZombieAfterDelay(5f));
+        }
     }
 
     private IEnumerator ReleaseZombieAfterDelay(float delay)

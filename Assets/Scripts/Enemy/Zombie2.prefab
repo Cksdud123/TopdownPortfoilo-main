@@ -75,15 +75,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 50c6458a8165ca447a0d47c58327aed4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.11
+      value: -4.3156967
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 50c6458a8165ca447a0d47c58327aed4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.0000009536743
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 50c6458a8165ca447a0d47c58327aed4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.55
+      value: 4.471886
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 50c6458a8165ca447a0d47c58327aed4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1821,6 +1821,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 50c6458a8165ca447a0d47c58327aed4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 197786738700270751}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 50c6458a8165ca447a0d47c58327aed4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1245605430621058321}
     - targetCorrespondingSourceObject: {fileID: 1082271958561512970, guid: 50c6458a8165ca447a0d47c58327aed4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3123914439701896079}
@@ -2270,6 +2273,7 @@ MonoBehaviour:
   ragdollManager: {fileID: 0}
   navMeshAgent: {fileID: 0}
   experienceManager: {fileID: 0}
+  dropItem: {fileID: 1245605430621058321}
 --- !u!114 &3249092776523739364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2436,6 +2440,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1245605430621058321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3847906115106712942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22e7e442e4abfcd44852524d9e7a3e9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ItemDropData:
+  - Item: {fileID: 934496460849322569, guid: 27d4ae5d5fc44234196d6504dd9eac32, type: 3}
+    DropRate: 0.1
+  - Item: {fileID: 6486497520093452813, guid: cbe53345bead35647a9f4f21d282ff41, type: 3}
+    DropRate: 0.4
+  _notDropProbability: 0.5
 --- !u!1 &3936967908321447477 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1082271958561512970, guid: 50c6458a8165ca447a0d47c58327aed4, type: 3}
