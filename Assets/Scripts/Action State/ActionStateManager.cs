@@ -31,6 +31,7 @@ public class ActionStateManager : MonoBehaviour
     public float fovSmoothSpeed = 10f;
 
     public Transform Aimposition;
+    public float rotationSpeed = 1f;
 
     public TwoBoneIKConstraint IHandIK;
     public TwoBoneIKConstraint RHandIK;
@@ -74,7 +75,6 @@ public class ActionStateManager : MonoBehaviour
         audioSource = weapon.audioSource;
         ammo = weapon.ammo;
     }
-
     private void Aim()
     {
         var (success, position) = GetMousePosition();
@@ -106,7 +106,6 @@ public class ActionStateManager : MonoBehaviour
             return (success: false, position: Vector3.zero);
         }
     }
-
     public void MagOut()
     {
         audioSource.PlayOneShot(ammo.magOutSound);

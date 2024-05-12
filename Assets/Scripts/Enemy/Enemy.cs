@@ -46,7 +46,7 @@ public class Enemy : PoolAble
             dropItem.Item();
             experienceManager.AddExperience(5);
             DeactiveEnemy();
-            StartCoroutine(ReleaseZombieAfterDelay(3f));
+            StartCoroutine(ReleaseZombieAfterDelay(2f));
         }
     }
 
