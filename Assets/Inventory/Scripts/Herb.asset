@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9be830f12cf5a4544b7991754796e67c, type: 3}
+  m_Name: Herb
+  m_EditorClassIdentifier: 
+  id: 0
+  itemName: Herb
+  description: HP up
+  prefab: {fileID: 0}
+  icon: {fileID: 2800000, guid: b08425c4f4b0e9c4eb99d87fcc130512, type: 3}
+  types: 1
+  maxStack: 10
+  weight: 0.2
+  baseValue: 1
