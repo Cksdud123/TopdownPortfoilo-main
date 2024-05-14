@@ -53,6 +53,13 @@ public class Enemy : PoolAble
     private IEnumerator ReleaseZombieAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
+
+        foreach (Transform child in transform)
+        {
+            child.localPosition = Vector3.zero;
+            child.localRotation = Quaternion.identity;
+        }
+
         ReleaseObject();
     }
 
@@ -64,6 +71,7 @@ public class Enemy : PoolAble
             ragdollManager.setColliderState(true);
             ragdollManager.ParentCollider.enabled = false;
         }
+
         navMeshAgent.enabled = false;
         animator.enabled = false;
     }

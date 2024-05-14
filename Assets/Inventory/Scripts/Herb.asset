@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 0
   itemName: Herb
   description: HP up
-  prefab: {fileID: 0}
+  prefab: {fileID: 934496460849322569, guid: 27d4ae5d5fc44234196d6504dd9eac32, type: 3}
   icon: {fileID: 2800000, guid: b08425c4f4b0e9c4eb99d87fcc130512, type: 3}
   types: 1
   maxStack: 10

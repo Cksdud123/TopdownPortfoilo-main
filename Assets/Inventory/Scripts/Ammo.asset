@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 1
   itemName: Ammo
   description: Bullet
-  prefab: {fileID: 0}
+  prefab: {fileID: 6486497520093452813, guid: cbe53345bead35647a9f4f21d282ff41, type: 3}
   icon: {fileID: 2800000, guid: 7543ed4b6f20d864a8c15203b56debe3, type: 3}
   types: 0
   maxStack: 30

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4929858476608707840}
   - component: {fileID: 6343273741547919531}
   m_Layer: 0
-  m_Name: Herb_RedPot
+  m_Name: HerbItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

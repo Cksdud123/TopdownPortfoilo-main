@@ -351,8 +351,8 @@ MonoBehaviour:
   - Item: {fileID: 6486497520093452813, guid: cbe53345bead35647a9f4f21d282ff41, type: 3}
     DropRate: 0.2
   - Item: {fileID: 934496460849322569, guid: 27d4ae5d5fc44234196d6504dd9eac32, type: 3}
-    DropRate: 0.3
-  _notDropProbability: 0.5
+    DropRate: 0.5
+  _notDropProbability: 0.2
 --- !u!136 &2746070064730005541
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -685,7 +685,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3

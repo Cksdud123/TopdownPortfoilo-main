@@ -75,19 +75,19 @@ public class Spawner : MonoBehaviour
         Debug.Log("Spawning enemy: " + enemy.name);
         var zombieGo = ObjectPoolingManager.instance.GetGo(enemy.name);
 
-        Enemy enemyGo = zombieGo.GetComponent<Enemy>();
+        zombieGo.transform.position = transform.position;
+        zombieGo.transform.rotation = Quaternion.identity;
 
-        enemyGo.transform.position = transform.position;
-        enemyGo.transform.rotation = Quaternion.identity;
+        Enemy enemyGo = zombieGo.GetComponent<Enemy>();
 
         enemyGo.ragdollManager.setRigidbodyState(true);
         enemyGo.ragdollManager.setColliderState(false);
         enemyGo.ragdollManager.ParentCollider.enabled = true;
 
+        // 초기 속성 설정
         enemyGo.HP = 100;
         enemyGo.navMeshAgent.enabled = true;
         enemyGo.animator.enabled = true;
-        enemyGo.gameObject.SetActive(true);
     }
 
     private void NormalizeSpawnRates()

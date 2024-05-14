@@ -590,8 +590,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 329700684}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.53717524, y: -0, z: -0, w: 0.8434707}
-  m_LocalPosition: {x: 0.5, y: 16.3, z: -7}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0.5, y: 16.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2080,8 +2080,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.53717524, y: 0, z: 0, w: 0.8434707}
-  m_LocalPosition: {x: 0.5, y: 16.3, z: -7}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0.5, y: 16.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3280,7 +3280,7 @@ MonoBehaviour:
   - objectName: AmmoItem
     perfab: {fileID: 6486497520093452813, guid: cbe53345bead35647a9f4f21d282ff41, type: 3}
     count: 5
-  - objectName: Herb_RedPot
+  - objectName: HerbItem
     perfab: {fileID: 934496460849322569, guid: 27d4ae5d5fc44234196d6504dd9eac32, type: 3}
     count: 5
 --- !u!1 &1611617648
@@ -3948,7 +3948,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 15, z: -7}
+  m_FollowOffset: {x: 0, y: 15, z: 0}
   m_XDamping: 0
   m_YDamping: 0
   m_ZDamping: 0
