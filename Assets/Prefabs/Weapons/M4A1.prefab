@@ -56,7 +56,7 @@ MonoBehaviour:
   barrelPos: {fileID: 2263982725645496401}
   bulletVelocity: 500
   bulletsPerShot: 1
-  damage: 100
+  damage: 34
   ammo: {fileID: 7812106294556357277}
   gunShot: {fileID: 8300000, guid: f7a99641aaa885543bfd6e0124605c89, type: 3}
   pistolShot: {fileID: 0}

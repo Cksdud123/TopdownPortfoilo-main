@@ -76,7 +76,6 @@ public class Inventory : MonoBehaviour
                 Destroy(obj.gameObject);
                 slots[i].SetStats();
                 return;
-
             }
         }
     }

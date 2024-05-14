@@ -35,6 +35,9 @@ public class Slot : MonoBehaviour, IDropHandler
 
         icon.texture = ItemInSlot.icon;
         txt_amount.text = $"{AmountInSlot}x";
+
+        // 텍스트가 아이콘 위에 렌더링되도록 설정
+        txt_amount.transform.SetAsLastSibling();
     }
     public void OnDrop(PointerEventData eventData)
     {

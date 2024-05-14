@@ -351,8 +351,8 @@ MonoBehaviour:
   - Item: {fileID: 6486497520093452813, guid: cbe53345bead35647a9f4f21d282ff41, type: 3}
     DropRate: 0.2
   - Item: {fileID: 934496460849322569, guid: 27d4ae5d5fc44234196d6504dd9eac32, type: 3}
-    DropRate: 0.5
-  _notDropProbability: 0.2
+    DropRate: 0.3
+  _notDropProbability: 0.5
 --- !u!136 &2746070064730005541
 CapsuleCollider:
   m_ObjectHideFlags: 0

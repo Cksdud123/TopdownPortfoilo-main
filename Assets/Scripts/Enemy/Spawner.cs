@@ -84,7 +84,6 @@ public class Spawner : MonoBehaviour
         enemyGo.ragdollManager.setColliderState(false);
         enemyGo.ragdollManager.ParentCollider.enabled = true;
 
-        // 초기 속성 설정
         enemyGo.HP = 100;
         enemyGo.navMeshAgent.enabled = true;
         enemyGo.animator.enabled = true;
