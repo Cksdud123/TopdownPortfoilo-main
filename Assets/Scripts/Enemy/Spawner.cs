@@ -78,7 +78,7 @@ public class Spawner : MonoBehaviour
         zombieGo.transform.position = transform.position;
         zombieGo.transform.rotation = Quaternion.identity;
 
-        Enemy enemyGo = zombieGo.GetComponent<Enemy>();
+        EnemyHealth enemyGo = zombieGo.GetComponent<EnemyHealth>();
 
         enemyGo.ragdollManager.setRigidbodyState(true);
         enemyGo.ragdollManager.setColliderState(false);

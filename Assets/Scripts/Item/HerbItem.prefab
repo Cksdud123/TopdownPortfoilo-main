@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5165155914089382066}
   - component: {fileID: 4572866525661285013}
-  - component: {fileID: 4929858476608707840}
   - component: {fileID: 6343273741547919531}
   m_Layer: 0
   m_Name: HerbItem
@@ -56,20 +55,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.3044762, y: 0.4593569, z: 0.24192047}
   m_Center: {x: -0.00327608, y: 0.2155227, z: -0.011226773}
---- !u!114 &4929858476608707840
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 934496460849322569}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3d58acb91a00994cbed6994fbb36fed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemStats: {fileID: 11400000, guid: db0431d94e55652448abceb1d59aa49a, type: 2}
-  amount: 2
 --- !u!114 &6343273741547919531
 MonoBehaviour:
   m_ObjectHideFlags: 0

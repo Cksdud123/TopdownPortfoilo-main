@@ -128,7 +128,7 @@ public class WeaponManager : MonoBehaviour
         if (Physics.Raycast(barrelPos.transform.position, barrelPos.transform.forward, out hitInfo, shootingRange))
         {
             hitBullet();
-            Enemy enemy = hitInfo.transform.GetComponentInParent<Enemy>();
+            EnemyHealth enemy = hitInfo.transform.GetComponentInParent<EnemyHealth>();
 
             if (enemy != null)
             {
@@ -160,3 +160,5 @@ public class WeaponManager : MonoBehaviour
         trailRenderer.Clear();
     }
 }
+
+

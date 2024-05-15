@@ -16,7 +16,7 @@ public class AttackToPlayer : MonoBehaviour
         if (hits.Length > 0)
         {
 
-            hits[0].gameObject.GetComponentInParent<Enemy>().TakeDamage(damage);
+            hits[0].gameObject.GetComponentInParent<EnemyHealth>().TakeDamage(damage);
 
             var bloodEffectGo = ObjectPoolingManager.instance.GetGo("BloodEffect");
             bloodEffectGo.transform.position = hits[0].transform.position;

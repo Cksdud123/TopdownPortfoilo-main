@@ -92,7 +92,8 @@ public class WeaponClassManager : MonoBehaviour
 
         // 현재 무기를 비활성화 한다
         weapons[currentWeaponIndex].gameObject.SetActive(false);
-
+        
+        // 애니메이션 레이어를 활성화 한다.
         LayerSelect(weaponIndex, LayerWeight, rigWeight);
 
         // 입력으로 들어온 무기를 활성화 한다.
