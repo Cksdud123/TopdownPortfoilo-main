@@ -38,6 +38,7 @@ public class ActionStateManager : MonoBehaviour
 
     AudioSource audioSource;
 
+
     void Awake()
     {
         anim = GetComponent<Animator>();
