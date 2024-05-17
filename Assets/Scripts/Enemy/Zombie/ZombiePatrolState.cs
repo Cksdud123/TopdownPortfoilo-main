@@ -28,7 +28,7 @@ public class ZombiePatrolState : StateMachineBehaviour
             wayPoints.Add(t);
         }
 
-        enemySound.Play_PatrolSound();
+        //enemySound.Play_PatrolSound();
         agent.SetDestination(wayPoints[Random.Range(0, wayPoints.Count)].position);
     }
 

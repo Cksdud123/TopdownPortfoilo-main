@@ -75,15 +75,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 50c6458a8165ca447a0d47c58327aed4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.15652704
+      value: -9.144382
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 50c6458a8165ca447a0d47c58327aed4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.00000047683716
+      value: -0.208601
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 50c6458a8165ca447a0d47c58327aed4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.9216766
+      value: 6.7738686
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 50c6458a8165ca447a0d47c58327aed4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2360,7 +2360,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.05
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2369,7 +2369,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 7
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0

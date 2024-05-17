@@ -17,7 +17,7 @@ public class ZombieIdleState : StateMachineBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         enemySound = animator.GetComponent<EnemySoundManager>();
 
-        enemySound.Play_IdleSound();
+        //enemySound.Play_IdleSound();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

@@ -16,10 +16,12 @@ public class AmmoUI : MonoBehaviour
 
     private int IconCount;
     private int currentIConIndex;
-
     private void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+        }
     }
     private void Start()
     {

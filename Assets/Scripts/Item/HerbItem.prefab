@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5165155914089382066}
   - component: {fileID: 4572866525661285013}
   - component: {fileID: 6343273741547919531}
+  - component: {fileID: 4373991386995442064}
   m_Layer: 0
   m_Name: HerbItem
   m_TagString: Untagged
@@ -67,6 +68,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 125fa931b1e364242919f2a36b91b066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4373991386995442064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934496460849322569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c38657d5cf48a34b843d31fdac21eee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RotationSpeed: 50
 --- !u!1 &5163362263635500188
 GameObject:
   m_ObjectHideFlags: 0
