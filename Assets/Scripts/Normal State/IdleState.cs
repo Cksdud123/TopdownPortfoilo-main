@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class IdleState : MovementBaseState
 {
-    private float sprint_Rate = 5f;
+    private float sprint_Rate = 10f;
 
     public override void EnterState(MovementStateManager movement) { }
 

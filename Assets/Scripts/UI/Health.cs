@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
 public class Health : MonoBehaviour
 {
@@ -11,10 +12,18 @@ public class Health : MonoBehaviour
     [HideInInspector] public float infection, maxinfection = 100;
     float lerpSpeed;
 
+    public GameOverScreen gameOverScreen;
+
+    public TextMeshProUGUI MaxHPText;
+    public TextMeshProUGUI MaxStaminaText;
+
     private void Start()
     {
         health = maxHealth;
         stamina = maxStamina;
+
+        MaxHPText.text = "MaxHP : " + maxHealth.ToString();
+        MaxStaminaText.text = "MaxStamina : " + maxStamina.ToString();
         infection = 0;
     }
 
@@ -48,6 +57,12 @@ public class Health : MonoBehaviour
         {
             health -= damage;
             infection += infectionRate;
+
+            if (health <= 0 || infection >= maxinfection)
+            {
+                // 게임 오버
+                gameOverScreen.SetUp();
+            }
         }
     }
     public void SubStamina(float DecreaseStamina)
@@ -57,11 +72,12 @@ public class Health : MonoBehaviour
             stamina -= DecreaseStamina;
         }
     }
-    public void AddStamina(float DecreaseStamina)
+    public void AddStamina(float IncreaseStamina)
     {
-        if (stamina > 0)
+        stamina += IncreaseStamina;
+        if (stamina > maxStamina)
         {
-            stamina += DecreaseStamina;
+            stamina = maxStamina;
         }
     }
 }

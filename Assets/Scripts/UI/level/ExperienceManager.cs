@@ -17,6 +17,8 @@ public class ExperienceManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI experienceText;
     [SerializeField] Image experienceFill;
 
+    public Health health;
+
     void Start()
     {
         UpdateLevel();
@@ -42,6 +44,15 @@ public class ExperienceManager : MonoBehaviour
     {
         previousLevelsExperience = (int)experienceCurve.Evaluate(currentLevel);
         nextLevelsExperience = (int)experienceCurve.Evaluate(currentLevel + 1);
+
+        health.MaxHPText.text = "MaxHP : " + health.maxHealth.ToString();
+        health.MaxStaminaText.text = "MaxStamina : " + health.maxStamina.ToString();
+
+        health.maxHealth += 5;
+        health.health += health.maxHealth;
+
+        health.maxStamina += 5;
+        health.stamina += health.maxStamina;
         UpdateInterface();
     }
 

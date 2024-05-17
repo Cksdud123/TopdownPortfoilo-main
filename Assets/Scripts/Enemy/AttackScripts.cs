@@ -16,8 +16,7 @@ public class AttackScripts : MonoBehaviour
 
         if (hits.Length > 0)
         {
-
-            hits[0].gameObject.GetComponent<Health>().ApplyDamage(damage + Random.Range(5.0f, 15.0f), infection + Random.Range(1.0f, 15.0f));
+            hits[0].gameObject.GetComponent<Health>().ApplyDamage(damage + Random.Range(1.0f, 5.0f), infection + Random.Range(1.0f, 15.0f));
 
             gameObject.SetActive(false);
 

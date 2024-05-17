@@ -12,12 +12,15 @@ public class EnemyHealth : PoolAble
     [HideInInspector] public ExperienceManager experienceManager;
 
     public DropItem dropItem;
+    public bool isDead = false; // 좀비가 죽었는지 확인하는 플래그
+
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         ragdollManager = GetComponent<RagdollManager>();
         experienceManager = FindObjectOfType<ExperienceManager>();
     }
+
     private void Start()
     {
         navMeshAgent.enabled = true;
@@ -25,6 +28,8 @@ public class EnemyHealth : PoolAble
     }
     public void TakeDamage(float damageAmount)
     {
+        if (isDead) return; // 좀비가 이미 죽었으면 아무것도 하지 않음
+
         HP -= damageAmount;
         Vector3 randomness = new Vector3(Random.Range(0f, 0.25f), Random.Range(0f, 1.5f), Random.Range(0f, 0.25f));
         DamagePopUpGenerator.current.CreatePopUp(transform.position + randomness, damageAmount.ToString(), Color.red);
@@ -41,13 +46,15 @@ public class EnemyHealth : PoolAble
 
     private void Die()
     {
-        if (HP <= 0)
-        {
-            dropItem.Item();
-            experienceManager.AddExperience(5);
-            DeactiveEnemy();
-            StartCoroutine(ReleaseZombieAfterDelay(2f));
-        }
+        if (isDead) return;
+
+        isDead = !isDead;
+
+        dropItem.Item();
+        DeactivateEnemy();
+        experienceManager.AddExperience(5);
+        ScoreManager.instance.AddPoint();
+        StartCoroutine(ReleaseZombieAfterDelay(2f));
     }
 
     private IEnumerator ReleaseZombieAfterDelay(float delay)
@@ -63,7 +70,7 @@ public class EnemyHealth : PoolAble
         ReleaseObject();
     }
 
-    public void DeactiveEnemy()
+    public void DeactivateEnemy()
     {
         if (ragdollManager != null)
         {

@@ -13,7 +13,7 @@ public class ZombieChaseState : StateMachineBehaviour
     {
         agent = animator.GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        agent.speed = Random.Range(5.0f, 10.0f);
+        agent.speed = Random.Range(3.0f, 7.0f);
 
         enemySound = animator.GetComponent<EnemySoundManager>();
 

@@ -25,6 +25,7 @@ public class Spawner : MonoBehaviour
 
     private float _timeTowardsNextSpawn; // 다음 스폰까지 남은 시간을 추적하는 변수
     private float _sumOfSpawnChances; // 모든 적 스폰 확률의 합
+
     public float SpawnRate { get => 1 / _timeBetweenSpawns; set => _timeBetweenSpawns = 1 / value; }
 
     private void Start()
@@ -80,6 +81,7 @@ public class Spawner : MonoBehaviour
 
         EnemyHealth enemyGo = zombieGo.GetComponent<EnemyHealth>();
 
+        enemyGo.isDead = false;
         enemyGo.ragdollManager.setRigidbodyState(true);
         enemyGo.ragdollManager.setColliderState(false);
         enemyGo.ragdollManager.ParentCollider.enabled = true;
@@ -87,6 +89,7 @@ public class Spawner : MonoBehaviour
         enemyGo.HP = 100;
         enemyGo.navMeshAgent.enabled = true;
         enemyGo.animator.enabled = true;
+
     }
 
     private void NormalizeSpawnRates()

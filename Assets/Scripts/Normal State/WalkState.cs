@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WalkState : MovementBaseState
 {
-    private float sprint_Rate = 2.5f;
+    private float sprint_Rate = 5f;
     public override void EnterState(MovementStateManager movement) => movement.anim.SetBool("Walking", true);
 
     public override void UpdateState(MovementStateManager movement)
