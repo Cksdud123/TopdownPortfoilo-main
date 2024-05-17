@@ -8,7 +8,6 @@ public class MovementStateManager : MonoBehaviour
     public float walkSpeed = 3, walkBackSpeed = 2; // 걷기속도, 뒤로걷기속도
     public float runSpeed = 7, runBackSpeed = 5; // 뛰기속도, 뒤로뛰기속도
 
-
     // 플레이어 이동변수
     private float hInput;
     private float vInput;
@@ -34,9 +33,11 @@ public class MovementStateManager : MonoBehaviour
     [HideInInspector] public bool jumped; // 점프 여부
     Vector3 velocity; // 속도 벡터
 
+    [HideInInspector] public Health health;
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
+        health = GetComponent<Health>();
         anim = GetComponent<Animator>();
         mainCamera = Camera.main;
         SwitchState(Idle);
