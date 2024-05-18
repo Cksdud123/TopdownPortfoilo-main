@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Pool;
 using TMPro;
 using UnityEditor.PackageManager;
+using Unity.Burst.Intrinsics;
 
 public enum Weapon
 {
@@ -23,7 +24,7 @@ public class WeaponManager : MonoBehaviour
     [SerializeField] Transform barrelPos; // 총구 위치
     [SerializeField] float bulletVelocity; // 총알 발사 속도
     [SerializeField] int bulletsPerShot; // 발사할 총알 개수
-    public float damage = 20; // 총알 데미지
+    private float damage = 0;
 
     [SerializeField] public WeaponAmmo ammo; // 총알 잔여량 관리 클래스
 
@@ -31,6 +32,7 @@ public class WeaponManager : MonoBehaviour
 
     private ActionStateManager actions;
     WeaponClassManager weaponClass;
+    WeaponBloom bloom;
     WeaponRecoil recoil;
 
     [SerializeField] AudioClip gunShot;
@@ -52,6 +54,7 @@ public class WeaponManager : MonoBehaviour
         muzzleFlash = GetComponentInChildren<ParticleSystem>();
         actions = GetComponentInParent<ActionStateManager>();
         anim = GetComponentInParent<Animator>();
+        bloom = GetComponent<WeaponBloom>();
     }
     void Start()
     {
@@ -72,8 +75,11 @@ public class WeaponManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (ShouldFire()) Fire();
-        else if(weaponState == Weapon.Knife)
+        if (ShouldFire())
+        {
+            Fire();
+        }
+        else if (weaponState == Weapon.Knife)
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
@@ -132,7 +138,7 @@ public class WeaponManager : MonoBehaviour
 
             if (enemy != null)
             {
-                enemy.TakeDamage(damage);
+                enemy.TakeDamage(damage + Random.Range(15, 30));
 
                 EnemySoundManager enemySound = enemy.GetComponent<EnemySoundManager>();
                 enemySound.Play_getHitSound();

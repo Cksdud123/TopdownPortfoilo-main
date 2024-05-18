@@ -7,9 +7,9 @@ public class Health : MonoBehaviour
     public Image ringStaminaBar;
     public Image ringInfectionBar;
 
-    [HideInInspector] public float health, maxHealth = 100;
-    [HideInInspector] public float stamina, maxStamina = 100;
-    [HideInInspector] public float infection, maxinfection = 100;
+    [HideInInspector] public float health, maxHealth = 100.0f;
+    [HideInInspector] public float stamina, maxStamina = 100.0f;
+    [HideInInspector] public float infection, maxinfection = 100.0f;
     float lerpSpeed;
 
     public GameOverScreen gameOverScreen;
@@ -17,15 +17,16 @@ public class Health : MonoBehaviour
     public TextMeshProUGUI MaxHPText;
     public TextMeshProUGUI MaxStaminaText;
 
-    private void Start()
+    private void OnEnable()
     {
         health = maxHealth;
         stamina = maxStamina;
+        infection = 0;
 
         MaxHPText.text = "MaxHP : " + maxHealth.ToString();
         MaxStaminaText.text = "MaxStamina : " + maxStamina.ToString();
-        infection = 0;
     }
+
 
     private void Update()
     {

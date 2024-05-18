@@ -5,8 +5,8 @@ using UnityEngine;
 public class MovementStateManager : MonoBehaviour
 {
     [HideInInspector] public float currentMoveSpeed; // 현재 이동 속도
-    public float walkSpeed = 3, walkBackSpeed = 2; // 걷기속도, 뒤로걷기속도
-    public float runSpeed = 7, runBackSpeed = 5; // 뛰기속도, 뒤로뛰기속도
+    public float walkSpeed = 3;
+    public float runSpeed = 7;
 
     // 플레이어 이동변수
     private float hInput;
@@ -29,7 +29,7 @@ public class MovementStateManager : MonoBehaviour
     Vector3 spherePos; // 구의 위치
 
     [SerializeField] float gravity = -9.81f;
-    [SerializeField] float jumpForce = 10;
+    float jumpForce = 10;
     [HideInInspector] public bool jumped; // 점프 여부
     Vector3 velocity; // 속도 벡터
 

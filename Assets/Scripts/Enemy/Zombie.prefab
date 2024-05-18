@@ -168,6 +168,7 @@ MonoBehaviour:
   navMeshAgent: {fileID: 0}
   experienceManager: {fileID: 0}
   dropItem: {fileID: 1271946189707334098}
+  isDead: 0
 --- !u!54 &8027032200001839540
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -351,8 +352,12 @@ MonoBehaviour:
   - Item: {fileID: 6486497520093452813, guid: cbe53345bead35647a9f4f21d282ff41, type: 3}
     DropRate: 0.2
   - Item: {fileID: 934496460849322569, guid: 27d4ae5d5fc44234196d6504dd9eac32, type: 3}
-    DropRate: 0.3
-  _notDropProbability: 0.5
+    DropRate: 0.2
+  - Item: {fileID: 1664418247671118366, guid: 7a245383e41d6874fb63ea935f7ed38e, type: 3}
+    DropRate: 0.2
+  - Item: {fileID: 7747124207988451383, guid: 1a713d03224563c4e8ee0a0b62721dad, type: 3}
+    DropRate: 0.2
+  _notDropProbability: 0.4
 --- !u!136 &2746070064730005541
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3632,6 +3637,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 20
+  infection: 0
   radius: 1
   layerMask:
     serializedVersion: 2

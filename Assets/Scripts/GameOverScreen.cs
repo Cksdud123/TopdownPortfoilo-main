@@ -18,4 +18,16 @@ public class GameOverScreen : MonoBehaviour
         SceneManager.LoadScene("TopDownScene");
         Time.timeScale = 1.0f;
     }
+    public void QuitButton()
+    {
+        SceneManager.LoadScene("MainScene");
+    }
+    public void GameStart()
+    {
+        SceneManager.LoadScene("TopDownScene");
+    }
+    public void GameQuit()
+    {
+        Application.Quit();
+    }
 }
